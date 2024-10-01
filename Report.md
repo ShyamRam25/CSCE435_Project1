@@ -29,7 +29,9 @@ Assuming n threads and k as a random sampling constant, the algorithm goes as fo
   3. Split the data into buckets defined by these pivots
   4. Sort the buckets in parallel
 
+
 def sampleSort(A, k, p):
+
     # Step 1
     S = [S1, ..., S(p-1)k] # Create a random sample from A
     sort S
