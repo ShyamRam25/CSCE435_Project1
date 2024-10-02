@@ -26,25 +26,51 @@
 Sample Sort:
 Assuming n threads and k as a random sampling constant, the algorithm goes as follows: 
   1. Randomly sample n * k elements from the input
-  2. Sort the samples and select the k-th, 2*k-th, etc. elements as pivots
-  3. Split the data into buckets defined by these pivots
-  4. Sort the buckets in parallel
+  2. Share these samples with every processor (MPI_AllGather) or MPI_BCast
+  3. Sort the samples and select the k-th, 2*k-th, etc. elements as pivots
+  4. Split the data into buckets defined by these pivots
+  5. Send the b_th bucket to the b_th processor (MPI_ToAll[v])
+  6. Sort the buckets in parallel
 
 
-def sampleSort(A, k, p):
+def sampleSort(A, n, num_processors):
 
-    # Step 1
-    S = [S1, ..., S(p-1)k] # Create a random sample from A
-    sort S
-    splitters = [s0, ..., sp-1, sp]
-    buckets = [-∞, Sk, S2k, ..., S(p-1)k, ∞]
-    Map buckets onto splitters
-    # Step 2
-    for each element in A:
-        find j such that s[j-1] < a <= s[j]
-        place a in bucket b[j]
-    # Step 3
-    return concatenate(sampleSort(b1), ..., sampleSort(bk))
+    num_elements_bloc = n / num_processors
+    
+    #Send Data
+    MPI_BCast(n, 1, MPI_INT, 0, MPI_COMM, WORLD)
+    Take input data and validate
+    MPI_Scatter(Input, num_elements_bloc)
+    
+    #Sort locally
+    qsort(A, num_elements_bloc, ...)
+    MPI_Gather(A, n, ...)
+    
+    #Choose local splitters
+    Splitters = [...]
+    
+    #Gather local splitters
+    AllSplitters = [...]
+    MPI_Gather(Splitter, numprocs-1, AllSplitter, ...)
+    
+    #Choose global splitters
+    if Rank == 0:
+      qsort(AllSplitter)
+      Splitter[i] = AllSplitter[(num_processors-1) * (i + 1)]
+    
+    #Broadcast global splitters
+    MPI_BCast(Splitter, ...)
+    
+    #Create num_processors buckets
+    buckets = [...]
+    
+    #Send buckets to respective processors
+    MPI_Alltoall(Buckets, ...)
+    #Sort local buckets
+    qsort(LocalBucket, ...)
+    MPI_Gather(LocalBucket)
+
+    #Print out results
 
 
 Merge Sort:
