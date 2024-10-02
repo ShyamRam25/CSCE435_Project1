@@ -1,6 +1,6 @@
 # CSCE 435 Group project
 
-## 0. Group number: 
+## 0. Group number: 11
 
 ## 1. Group members:
 1. Shyam Ramachandran
@@ -55,6 +55,7 @@ Merge Sort:
   4. Gather final sorted array on processor 0
 
 def parallelMergeSort(A, lo, hi, B, proc_rank, num_procs):
+
     // Step 1
     local_len := (hi - lo + 1) / num_procs
     local_A := MPI_Scatter(A, local_len, proc_rank)
