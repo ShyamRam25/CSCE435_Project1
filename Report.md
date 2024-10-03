@@ -18,7 +18,7 @@
 
 - Merge Sort: Merge sort is a divide-and-conquer algorithm that works by recursively splitting an array into smaller subarrays until each subarray has one element, and is therefore inherently sorted. Then, it merges these subarrays back together in a sorted order. When implementing Merge sort in parallel, the recursive calls stay almost the same but the merging process is implemented in parallel. First, the input array is divided across multiple processors and each processor sorts its own subarray. Next, the processors communicate with eachother via MPI to perform a parralel merge operation.
   
-- Radix Sort:
+- Radix Sort: Radix Sort is a non-comparative sorting algorithm that sorts numbers by processing individual digits. It works by sorting numbers digit by digit, starting from the least significant digit to the most significant digit. For each digit, the algorithm uses a stable sorting technique like counting sort to ensure that the relative order of numbers is preserved. Parallel algorithm can be implemented by distributing the globe array into smaller chucks between worker processes. Perform radix sort on the local arrays. Finally merge them back together in the master process.
 
 ### 2b. Pseudocode for each parallel algorithm
 - For MPI programs, include MPI calls you will use to coordinate between processes
@@ -105,6 +105,30 @@ def parallelMergeSort(A, lo, hi, B, proc_rank, num_procs):
     // Step 4
     if proc_rank == 0 then
         B := local_sorted
+
+
+Radix Sort:
+
+  1. Broadcast the size of the global array(the array we are sorting)
+  MPI_bcast(&global_array_size, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+  2. Determine the size of the local matrix in each process
+  local_size = global_size / num_of_processes;
+
+  3. Create local arrays with the local size
+  vector<int> local_arr(local_size);
+
+  4. Distribute the data to all worker processes
+  MPI_Scatter(global_array.data(), local_size, MPI_INT, local_arr.data(), local_size, MPI_INT, 0, MPI_COMM_WORLD);
+
+  5. Perform radix sort in each worker process
+  radix_sort(local_arr);
+
+  6. Gather sorted local arrays to master
+  MPI_Gather(local_arr.data(), local_size, MPI_INT, glocal_arr.data(), local_size, MPI_INT, 0, MPI_COMM_WORLD);
+
+  7. Merge the gathered data
+
 
 
     
