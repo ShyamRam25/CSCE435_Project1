@@ -14,7 +14,7 @@ Our team will communicate via text messaging.
 
 ### 2a. Brief project description (what algorithms will you be comparing and on what architectures)
 
-- Bitonic Sort:
+- Bitonic Sort: Bitonic sort is a comparison-based parallel sorting algorithm that first creates a bitonic sequence then sorts the sequence. A bitonic sequence is a sequence such that the elemts are first monotonically increasing, then monotonically decreasing. It is important to note that bitonic sort can only be done if there are 2<sup>n</sup> number of elements for some integer n. The time complexity is O(log<sup>2</sup>n) and the space complexity is O(nlog<sup>2</sup>n). It is important to note that while the number of comparisons is more than other sorting algorithms, bitonic sort is still more efficient than quicksort. 
   
 - Sample Sort: Sample sort is a divide-and-conquer sorting algorithm that works a little differently than other generic partition-based sorting algorithms. This is partially due to the fact that Sample sort is commonly used in parallel systems, so regular sorting algorithms performance can be severely throttled when an array is non-uniform. Sample sort gets around this by choosing a sample S and getting a range of buckets by sorting the sample and choosing a number of elements from the result. These elements (called splitters) go on to divide the array into approximately equal-sized buckets. 
 
