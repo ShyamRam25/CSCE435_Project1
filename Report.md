@@ -137,9 +137,10 @@ Radix Sort:
 - Strong scaling (same problem size, increase number of processors/nodes)
 - Weak scaling (increase problem size, increase number of processors)
 
-- We will be testing with both an increasing number of processors and an increasing problem size.
-    - Each program will be tested in 4 different runs as well:
-            - With a fully random array
-            - With a fully sorted array
-            - With a reverse sorted array
-            - With a sorted array, but with 1% of elements swapped, internally and externally
+We will be testing with both an increasing number of processors and an increasing problem size.
+    Each program will be tested in 4 different runs as well
+    
+    With a fully random array
+    With a fully sorted array
+    With a reverse sorted array
+    With a sorted array, but with 1% of elements swapped, internally and externally
