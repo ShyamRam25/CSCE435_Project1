@@ -8,6 +8,8 @@
 3. Sydney Lipar
 4. Nai-Yun Wu
 
+Our team will communicate via text messaging. 
+
 ## 2. Project topic (e.g., parallel sorting algorithms)
 
 ### 2a. Brief project description (what algorithms will you be comparing and on what architectures)
