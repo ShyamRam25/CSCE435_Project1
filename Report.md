@@ -14,7 +14,7 @@ Our team will communicate via text messaging.
 
 ### 2a. Brief project description (what algorithms will you be comparing and on what architectures)
 
-- Bitonic Sort: Bitonic sort is a comparison-based parallel sorting algorithm that first creates a bitonic sequence then sorts the sequence. A bitonic sequence is a sequence such that the elemts are first monotonically increasing, then monotonically decreasing. It is important to note that bitonic sort can only be done if there are 2<sup>n</sup> number of elements for some integer n. The time complexity is O(log<sup>2</sup>n) and the space complexity is O(nlog<sup>2</sup>n). It is important to note that while the number of comparisons is more than other sorting algorithms, bitonic sort is still more efficient than quicksort. 
+- Bitonic Sort: Bitonic sort is a comparison-based parallel sorting algorithm that first creates a bitonic sequence then sorts the sequence. A bitonic sequence is a sequence such that the elemts are first monotonically increasing, then monotonically decreasing. Then, the algorithm repeatedly merges these bitonic sequences to produce a sorted sequence. It is important to note that bitonic sort can only be done if there are 2<sup>n</sup> number of elements for some integer n. The time complexity is O(log<sup>2</sup>n) and the space complexity is O(nlog<sup>2</sup>n). It is important to note that while the number of comparisons is more than other sorting algorithms, bitonic sort is still more efficient than quicksort. 
   
 - Sample Sort: Sample sort is a divide-and-conquer sorting algorithm that works a little differently than other generic partition-based sorting algorithms. This is partially due to the fact that Sample sort is commonly used in parallel systems, so regular sorting algorithms performance can be severely throttled when an array is non-uniform. Sample sort gets around this by choosing a sample S and getting a range of buckets by sorting the sample and choosing a number of elements from the result. These elements (called splitters) go on to divide the array into approximately equal-sized buckets. 
 
@@ -24,6 +24,34 @@ Our team will communicate via text messaging.
 
 ### 2b. Pseudocode for each parallel algorithm
 - For MPI programs, include MPI calls you will use to coordinate between processes
+
+Bitonic Sort:
+  1. If number of elements isn't power of 2, pad list with infinity until the size is a power of 2
+  2. Create the bitonic sequence
+  3. Merge the bitonic sequences
+  4. Recursively merge until completely sorted. Repeat process for each subsequence
+
+def bitonicSort(loc_arr, size):
+
+    n = len(loc_arr)
+    total_size = n * size
+
+    // Bitonic sequence creation
+    for k=2 to k=total_size by powers of 2:
+      for j=k/2 to j=1 by division by 2:
+
+        // Local comparison and swap
+        for i=0 to i=n-1:
+          partner = i XOR j // Get partner index for comparison
+          
+          if partner >= 0 and partner < total_size:
+            partner_value = mpiExchangeValue(loc_arr[i], partner)
+            
+            if loc_arr[i] > partner_value:
+              swap(loc_arr[i], partner_value)
+              
+    return loc_arr
+  
 
 Sample Sort:
 Assuming n threads and k as a random sampling constant, the algorithm goes as follows: 
