@@ -26,115 +26,127 @@ Our team will communicate via text messaging.
 - For MPI programs, include MPI calls you will use to coordinate between processes
 
 Bitonic Sort:
+
   1. If number of elements isn't power of 2, pad list with infinity until the size is a power of 2
+     
   2. Create the bitonic sequence
-  3. Merge the bitonic sequences
-  4. Recursively merge until completely sorted. Repeat process for each subsequence
-
-def bitonicSort(loc_arr, size):
-
-    n = len(loc_arr)
-    total_size = n * size
-
-    // Bitonic sequence creation
-    for k=2 to k=total_size by powers of 2:
-      for j=k/2 to j=1 by division by 2:
-
-        // Local comparison and swap
-        for i=0 to i=n-1:
-          partner = i XOR j // Get partner index for comparison
-          
-          if partner >= 0 and partner < total_size:
-            partner_value = mpiExchangeValue(loc_arr[i], partner)
-            
-            if loc_arr[i] > partner_value:
-              swap(loc_arr[i], partner_value)
-              
-    return loc_arr
   
+  3. Merge the bitonic sequences
+  
+  4.  Recursively merge until completely sorted. Repeat process for each subsequence
+
+    def bitonicSort(loc_arr, size):
+
+      n = len(loc_arr)
+      total_size = n * size
+  
+      // Bitonic sequence creation
+      for k=2 to k=total_size by powers of 2:
+        for j=k/2 to j=1 by division by 2:
+  
+          // Local comparison and swap
+          for i=0 to i=n-1:
+            partner = i XOR j // Get partner index for comparison
+            
+            if partner >= 0 and partner < total_size:
+              partner_value = mpiExchangeValue(loc_arr[i], partner)
+              
+              if loc_arr[i] > partner_value:
+                swap(loc_arr[i], partner_value)
+                
+      return loc_arr
+    
 
 Sample Sort:
 Assuming n threads and k as a random sampling constant, the algorithm goes as follows: 
   1. Randomly sample n * k elements from the input
+    
   2. Share these samples with every processor (MPI_AllGather) or MPI_BCast
+    
   3. Sort the samples and select the k-th, 2*k-th, etc. elements as pivots
+    
   4. Split the data into buckets defined by these pivots
+  
   5. Send the b_th bucket to the b_th processor (MPI_ToAll[v])
-  6. Sort the buckets in parallel
+     
+  6.  Sort the buckets in parallel
 
 
-def sampleSort(A, n, num_processors):
+    def sampleSort(A, n, num_processors):
 
-    num_elements_bloc = n / num_processors
-    
-    #Send Data
-    MPI_BCast(n, 1, MPI_INT, 0, MPI_COMM, WORLD)
-    Take input data and validate
-    MPI_Scatter(Input, num_elements_bloc)
-    
-    #Sort locally
-    qsort(A, num_elements_bloc, ...)
-    MPI_Gather(A, n, ...)
-    
-    #Choose local splitters
-    Splitters = [...]
-    
-    #Gather local splitters
-    AllSplitters = [...]
-    MPI_Gather(Splitter, numprocs-1, AllSplitter, ...)
-    
-    #Choose global splitters
-    if Rank == 0:
-      qsort(AllSplitter)
-      Splitter[i] = AllSplitter[(num_processors-1) * (i + 1)]
-    
-    #Broadcast global splitters
-    MPI_BCast(Splitter, ...)
-    
-    #Create num_processors buckets
-    buckets = [...]
-    
-    #Send buckets to respective processors
-    MPI_Alltoall(Buckets, ...)
-    #Sort local buckets
-    qsort(LocalBucket, ...)
-    MPI_Gather(LocalBucket)
-
-    #Print out results
+      num_elements_bloc = n / num_processors
+      
+      #Send Data
+      MPI_BCast(n, 1, MPI_INT, 0, MPI_COMM, WORLD)
+      Take input data and validate
+      MPI_Scatter(Input, num_elements_bloc)
+      
+      #Sort locally
+      qsort(A, num_elements_bloc, ...)
+      MPI_Gather(A, n, ...)
+      
+      #Choose local splitters
+      Splitters = [...]
+      
+      #Gather local splitters
+      AllSplitters = [...]
+      MPI_Gather(Splitter, numprocs-1, AllSplitter, ...)
+      
+      #Choose global splitters
+      if Rank == 0:
+        qsort(AllSplitter)
+        Splitter[i] = AllSplitter[(num_processors-1) * (i + 1)]
+      
+      #Broadcast global splitters
+      MPI_BCast(Splitter, ...)
+      
+      #Create num_processors buckets
+      buckets = [...]
+      
+      #Send buckets to respective processors
+      MPI_Alltoall(Buckets, ...)
+      #Sort local buckets
+      qsort(LocalBucket, ...)
+      MPI_Gather(LocalBucket)
+  
+      #Print out results
 
 
 Merge Sort:
 
   1. Distribute array across processors
+    
   2. Each processor sorts its own subarray
+    
   3. Perform parallel merge
+    
   4. Gather final sorted array on processor 0
 
-def parallelMergeSort(A, lo, hi, B, proc_rank, num_procs):
+    def parallelMergeSort(A, lo, hi, B, proc_rank, num_procs):
 
-    // Step 1
-    local_len := (hi - lo + 1) / num_procs
-    local_A := MPI_Scatter(A, local_len, proc_rank)
-
-    // Step 2
-    local_sorted := mergeSort(local_A, 0, local_len - 1)
-
-    // Step 3
-    step := 1
-    while step < num_procs do
-        if proc_rank % (2 * step) == 0 then
-            if proc_rank + step < num_procs then
-                recv_array := MPI_Recv(proc_rank + step)
-                merged_array := parallelMerge(local_sorted, recv_array)
-                local_sorted := merged_array
-        else
-            MPI_Send(local_sorted, proc_rank - step)
-            break
-        step := step * 2
-
-    // Step 4
-    if proc_rank == 0 then
-        B := local_sorted
+      // Step 1
+      local_len := (hi - lo + 1) / num_procs
+      local_A := MPI_Scatter(A, local_len, proc_rank)
+  
+      // Step 2
+      local_sorted := mergeSort(local_A, 0, local_len - 1)
+  
+      // Step 3
+      step := 1
+      while step < num_procs do
+          if proc_rank % (2 * step) == 0 then
+              if proc_rank + step < num_procs then
+                  recv_array := MPI_Recv(proc_rank + step)
+                  merged_array := parallelMerge(local_sorted, recv_array)
+                  local_sorted := merged_array
+          else
+              MPI_Send(local_sorted, proc_rank - step)
+              break
+          step := step * 2
+  
+      // Step 4
+      if proc_rank == 0 then
+          B := local_sorted
 
 
 Radix Sort:
