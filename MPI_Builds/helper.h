@@ -6,5 +6,6 @@ int* sortedArray(int n);
 int* randomArray(int n);
 int* reverseArray(int n);
 int* perturbedArray(int n);
+void deleteArray(int* a);
 
 #endif
