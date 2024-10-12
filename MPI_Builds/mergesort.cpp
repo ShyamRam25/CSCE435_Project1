@@ -1,19 +1,13 @@
 #include "mpi.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <limits.h>
-
 #include <caliper/cali.h>
 #include <caliper/cali-manager.h>
 #include <adiak.hpp>
 
-// parallel merge sort algorithm
-
-//add caliper annotations
-//lab 2- mrg start, calicxxmarkfunction, and addiak 
-//mgr.stop, flush, finalize
-
-//function declarations
+// Function declarations
 void mergesort(int array[], int left, int right);
 void merge(int array[], int left, int middle, int right);
 int* mergeArrays(int a[], int b[], int n, int m);
@@ -21,178 +15,171 @@ void p2a(int a[], int* b, int size);
 void l2g(int a[], int b[], int size);
 void printArray(int array[], int size);
 
-//main function
+// Add caliper annotations
+// Lab 2- mrg start, calicxxmarkfunction, and addiak 
+// mgr.stop, flush, finalize
+
+// Main function
 const int NUM = 16;
 
-int main(int argc, char* argv[]){
-
+int main(int argc, char* argv[]) {
     int i, a_size = NUM, local_size;
-    int numtasks, rank, dest, source, rc, count, tag=1, j;
-    int a[NUM];
-    int global[NUM];
+    int numtasks, rank;
+    int* a = new int[NUM];
+    int* global = new int[NUM];
     int* comp;
     MPI_Status Stat;
-    MPI_Request req;
-    MPI_Init(&argc,&argv);
+
+    MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+    // Local array for each process
+    int* local = new int[NUM / numtasks];
+    srand(static_cast<unsigned int>(time(NULL)));
 
-    // local array for every process
-    int local[(NUM/numtasks)];
-    srand(time(NULL));
+    // Setup array with random numbers
+    for (i = 0; i < NUM; i++)
+        a[i] = rand() % 100000;
 
-    // setup array with random numbers
-    for(i=0; i<NUM; i++)
-    a[i] = rand()%100000;
-    
-    printf("Original array:\n");
+    std::cout << "Original array:\n";
     printArray(a, NUM);
 
+    // Scatter and split array evenly for each process
+    MPI_Scatter(a, NUM / numtasks, MPI_INT, local, NUM / numtasks, MPI_INT, 0, MPI_COMM_WORLD);
+    local_size = NUM / numtasks;
 
-    // scatter and split array evenly for each process
-    MPI_Scatter(a, NUM/numtasks, MPI_INT, local,
-    NUM/numtasks, MPI_INT, 0, MPI_COMM_WORLD);
-    local_size = NUM/numtasks;
+    // Parent process
+    if (rank == 0) {
+        double begin, end, time_spent;
+        begin = MPI_Wtime();
 
-    // parent process
-    if(rank == 0){
-        clock_t begin, end;
-        double time_spent;
-        begin = clock();
+        // Sequential merge sort
+        mergesort(local, 0, local_size - 1);
 
-        // sequential merge sort
-        mergesort(local, 0, local_size-1);
-
-        //Push sorted local array to global array
+        // Push sorted local array to global array
         l2g(global, local, local_size);
         int j, recv_size = local_size;
-        int buff[recv_size];
+        int* buff = new int[recv_size];
 
+        for (j = 0; j < numtasks - 1; j++) {
+            // Receive sorted array from child process
+            MPI_Recv(buff, recv_size, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &Stat);
 
-        for(j=0; j<numtasks-1; j++){
-            //Receive sorted array from child process
-            MPI_Recv(buff, recv_size,
-            MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &Stat);
-            
-            //Merge received array and global array together
-            comp = mergeArrays(global, buff,
-            local_size, recv_size);
+            // Merge received array and global array together
+            comp = mergeArrays(global, buff, local_size, recv_size);
             local_size += recv_size;
-            //Pointer to Array
+
+            // Pointer to Array
             p2a(global, comp, local_size);
+            delete[] comp; // Free memory for merged array
         }
 
-        end = clock();
+        end = MPI_Wtime();
+        time_spent = end - begin;
 
-        printf("Sorted global array (Process %d):\n", rank);
-        printArray(global, local_size); // or however you are managing the global sorted results
-        time_spent = (double)(end-begin) /
-        CLOCKS_PER_SEC;
+        std::cout << "Sorted global array (Process " << rank << "):\n";
+        printArray(global, local_size);
+        std::cout << "Time spent (Parallel): " << time_spent << " seconds\n";
 
+        begin = MPI_Wtime();
+        // Time sequential merge sort on the same set of numbers
+        mergesort(a, 0, NUM - 1);
+        end = MPI_Wtime();
+        time_spent = end - begin;
+        std::cout << "Sorted global array (Process " << rank << "):\n";
+        printArray(global, local_size);
+        std::cout << "Time spent (Non-Parallel): " << time_spent << " seconds\n";
 
-        int k;
-        //for (k=0; k<local_size;k++)
-        //printf("%d\n", comp[k]);
-        printf("Time spent (Parallel) : %f\n",
-        time_spent);
-        begin = clock();
-        //Time sequential merge sort on same set of numbers
-        mergesort(a, 0, NUM-1);
-        end = clock();
-        time_spent = (double)(end-begin) /CLOCKS_PER_SEC;
-        printf("Sorted local array (Process %d):\n", rank);
-        printArray(local, local_size);
-        printf("Time spent (Non-Parallel): %f\n", time_spent);
-        }
+        delete[] buff; // Free memory
+    }
+    // Child process
+    else {
+        mergesort(local, 0, local_size - 1);
+        // Send sorted array to parent process
+        MPI_Send(local, local_size, MPI_INT, 0, 0, MPI_COMM_WORLD);
+    }
 
-        //Child process
-        else {
-            mergesort(local, 0, local_size-1);
-            //Send sorted array to parent process
-            MPI_Send(local, local_size, MPI_INT, 0, 0, MPI_COMM_WORLD);
-        }
-        MPI_Finalize();
+    delete[] local;   // Free local array
+    delete[] a;       // Free original array
+    delete[] global;  // Free global array
+
+    MPI_Finalize();
+    return 0;
 }
 
-// merge sort
-void mergesort(int array[], int left, int right){
-    if(left < right) {
+// Merge sort
+void mergesort(int array[], int left, int right) {
+    if (left < right) {
         int middle = (left + right) / 2;
         mergesort(array, left, middle);
-        mergesort(array, middle+1, right);
+        mergesort(array, middle + 1, right);
         merge(array, left, middle, right);
     }
 }
 
-// merge
-void merge(int array[], int left, int middle, int right){
-    int temp[NUM];
-    int i = left, j = middle+1, k = 0;
+// Merge function
+void merge(int array[], int left, int middle, int right) {
+    int* temp = new int[right - left + 1];
+    int i = left, j = middle + 1, k = 0;
 
-    while(i <= middle && j <= right){
-        if(array[i] <= array[j])
+    while (i <= middle && j <= right) {
+        if (array[i] <= array[j])
             temp[k++] = array[i++];
         else
             temp[k++] = array[j++];
     }
     while (i <= middle)
         temp[k++] = array[i++];
-    while(j <= right)
+    while (j <= right)
         temp[k++] = array[j++];
 
-    k--;
-
-    while(k >= 0) {
+    for (k = 0; k < right - left + 1; k++) {
         array[left + k] = temp[k];
-        k--;
     }
+
+    delete[] temp; // Free temporary array
 }
 
-int* mergeArrays(int a[], int b[], int n, int m){
-    int* c;
-    int size = n+m;
-    c = (int*)malloc(size*sizeof(int));
-    int i=0, j=0, k=0;
+// Merge two arrays
+int* mergeArrays(int a[], int b[], int n, int m) {
+    int* c = new int[n + m];
+    int i = 0, j = 0, k = 0;
 
-    while(i <= n-1 && j <= m-1){
-        if(a[i] <= b[j]){
+    while (i < n && j < m) {
+        if (a[i] <= b[j]) {
             c[k++] = a[i++];
-        }
-        else{
+        } else {
             c[k++] = b[j++];
         }
     }
 
-    while (i <= n-1){
+    while (i < n) {
         c[k++] = a[i++];
     }
-    while (j <= m-1){
+    while (j < m) {
         c[k++] = b[j++];
     }
     return c;
 }
 
-//Pointer to Array
-//mergeArray sends back a pointer to an array, this function pushes everything from the pointer to the global array
-void p2a(int a[], int* b, int size){
-    int i;
-    for(i=0; i<size; i++){
+// Pointer to Array
+void p2a(int a[], int* b, int size) {
+    for (int i = 0; i < size; i++) {
         a[i] = b[i];
     }
 }
-//Local to Global
-//Pushes local contents into the global array, only used for parents initial push of sorted data into global
-void l2g(int a[], int b[], int size){
-    int i;
-    for(i=0;i<size;i++)
-    a[i]=b[i];
+
+// Local to Global
+void l2g(int a[], int b[], int size) {
+    for (int i = 0; i < size; i++)
+        a[i] = b[i];
 }
 
-//print array function
+// Print array function
 void printArray(int array[], int size) {
     for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+        std::cout << array[i] << " ";
     }
-    printf("\n");
+    std::cout << "\n";
 }
