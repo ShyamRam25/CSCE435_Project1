@@ -4,7 +4,7 @@
 #include <cstring>
 #include <mpi.h>
 #include <algorithm>  // for std::qsort, std::sort
-#include <helper.cpp>
+#include "helper.h"
 
 
 
@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &Numprocs);
     MPI_Comm_rank(MPI_COMM_WORLD, &MyRank);
 
-    if (argc != 2) {
+    if (argc != 3) {
         if (MyRank == 0)
             std::cout << "Usage : run size" << std::endl;
         MPI_Finalize();
@@ -62,10 +62,32 @@ int main(int argc, char* argv[]) {
         }
 
         /* Initialise random number generator  */
+        // std::cout << "Input Array for Sorting: [";
+        // srand48(static_cast<unsigned int>(NoofElements));
+        // for (i = 0; i < NoofElements; i++) {
+        //     Input[i] = rand();
+        //     std::cout << Input[i];
+        //     if (i != NoofElements - 1) // To avoid printing comma after the last element
+        //         std::cout << ", ";
+        // }
+        // std::cout << "]" << std::endl;
+
+        std::string input = argv[2];
+        if (input == "sorted") {
+            Input = sortedArray(NoofElements);
+        } else if (input == "random") {
+            Input = randomArray(NoofElements);
+        } else if (input == "reverse") {
+            Input = reverseArray(NoofElements);
+        } else if (input == "perturbed") {
+            Input = perturbedArray(NoofElements);
+        } else {
+            std::cout << "Invalid input" << std::endl;
+            return 0;
+        }
+        //Print out the input array in same format as above 
         std::cout << "Input Array for Sorting: [";
-        srand48(static_cast<unsigned int>(NoofElements));
         for (i = 0; i < NoofElements; i++) {
-            Input[i] = rand();
             std::cout << Input[i];
             if (i != NoofElements - 1) // To avoid printing comma after the last element
                 std::cout << ", ";
