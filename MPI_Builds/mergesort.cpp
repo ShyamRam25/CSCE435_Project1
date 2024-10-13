@@ -7,6 +7,8 @@
 #include <caliper/cali-manager.h>
 #include <adiak.hpp>
 
+#include "helper.h"
+
 // Function declarations
 void mergesort(int array[], int left, int right);
 void merge(int array[], int left, int middle, int right);
@@ -20,12 +22,41 @@ void printArray(int array[], int size);
 // mgr.stop, flush, finalize
 
 // Main function
-const int NUM = 16;
 
 int main(int argc, char* argv[]) {
+    
+    //get input from command line
+    //format is mpirun -np 4 ./mergesort 16 sorted
+
+    //get value for num
+    int NUM = atoi(argv[1]);
+    std::cout << "NUM aka number of elements in array: " << NUM << std::endl;
+
+    //get value for type
+    std::string type = argv[2];
+    int*a;
+
+    if (type == "sorted") {
+        a = sortedArray(NUM);
+    }
+    else if (type == "random") {
+        a = randomArray(NUM);
+    }
+    else if (type == "reverse") {
+        a = reverseArray(NUM);
+    }
+    else if (type == "perturbed") {
+        a = perturbedArray(NUM);
+    }
+    else {
+        std::cout << "Invalid type\n";
+        return 0;
+    }
+    printArray(a,NUM);
+    
+    
     int i, a_size = NUM, local_size;
     int numtasks, rank;
-    int* a = new int[NUM];
     int* global = new int[NUM];
     int* comp;
     MPI_Status Stat;
@@ -34,16 +65,14 @@ int main(int argc, char* argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
+
     // Local array for each process
     int* local = new int[NUM / numtasks];
     srand(static_cast<unsigned int>(time(NULL)));
 
-    // Setup array with random numbers
-    for (i = 0; i < NUM; i++)
-        a[i] = rand() % 100000;
 
     std::cout << "Original array:\n";
-    printArray(a, NUM);
+    //printArray(a, NUM);
 
     // Scatter and split array evenly for each process
     MPI_Scatter(a, NUM / numtasks, MPI_INT, local, NUM / numtasks, MPI_INT, 0, MPI_COMM_WORLD);
@@ -79,7 +108,7 @@ int main(int argc, char* argv[]) {
         time_spent = end - begin;
 
         std::cout << "Sorted global array (Process " << rank << "):\n";
-        printArray(global, local_size);
+        //printArray(global, local_size);
         std::cout << "Time spent (Parallel): " << time_spent << " seconds\n";
 
         begin = MPI_Wtime();
@@ -88,7 +117,7 @@ int main(int argc, char* argv[]) {
         end = MPI_Wtime();
         time_spent = end - begin;
         std::cout << "Sorted global array (Process " << rank << "):\n";
-        printArray(global, local_size);
+        //printArray(global, local_size);
         std::cout << "Time spent (Non-Parallel): " << time_spent << " seconds\n";
 
         delete[] buff; // Free memory
