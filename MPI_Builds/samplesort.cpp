@@ -209,7 +209,7 @@ int main(int argc, char* argv[]) {
         }
         CALI_MARK_END("correctness_check");
 
-        // /**** Printing the output ****/
+        /**** Printing the output ****/
         // fp.open("sort.out");
         // if (!fp) {
         //     std::cerr << "Can't Open Output File" << std::endl;
