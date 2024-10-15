@@ -3,11 +3,20 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits.h>
+
+
 #include <caliper/cali.h>
 #include <caliper/cali-manager.h>
 #include <adiak.hpp>
 
 #include "helper.h"
+
+
+//linking to caliper
+//calls to caliper in source code
+// is there a mpi finalize call
+// run script environment variables to tell caliper to collect data
+
 
 // Function declarations
 void mergesort(int array[], int left, int right);
@@ -16,6 +25,7 @@ int* mergeArrays(int a[], int b[], int n, int m);
 void p2a(int a[], int* b, int size);
 void l2g(int a[], int b[], int size);
 void printArray(int array[], int size);
+bool isSorted(int array[], int size); 
 
 // Add caliper annotations
 // Lab 2- mrg start, calicxxmarkfunction, and addiak 
@@ -24,17 +34,32 @@ void printArray(int array[], int size);
 // Main function
 
 int main(int argc, char* argv[]) {
-    
-    //get input from command line
-    //format is mpirun -np 4 ./mergesort 16 sorted
+    CALI_CXX_MARK_FUNCTION;
 
-    //get value for num
+
+    //define caliper regions
+    const char* main = "main";
+    const char* data_init_runtime = "data_init_runtime";
+    const char* comm = "comm";
+    const char* comm_large = "comm_large";
+    const char* comp = "comp";
+    const char* comp_large = "comp_large";
+    const char* correctness_check = "correctness_check";
+
+    // MPI_Init(&argc, &argv);
+    // MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
+    // MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    cali::ConfigManager mgr;
+    mgr.start();
+    CALI_MARK_BEGIN(main);
+
+
+    // command line arguments
     int NUM = atoi(argv[1]);
-    std::cout << "NUM aka number of elements in array: " << NUM << std::endl;
-
-    //get value for type
     std::string type = argv[2];
     int*a;
+    CALI_MARK_BEGIN(data_init_runtime);
 
     if (type == "sorted") {
         a = sortedArray(NUM);
@@ -52,15 +77,16 @@ int main(int argc, char* argv[]) {
         std::cout << "Invalid type\n";
         return 0;
     }
-    printArray(a,NUM);
+    CALI_MARK_END(data_init_runtime);
     
     
     int i, a_size = NUM, local_size;
     int numtasks, rank;
     int* global = new int[NUM];
-    int* comp;
+    int* comp_array;
     MPI_Status Stat;
 
+    
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numtasks);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -70,74 +96,111 @@ int main(int argc, char* argv[]) {
     int* local = new int[NUM / numtasks];
     srand(static_cast<unsigned int>(time(NULL)));
 
-
-    std::cout << "Original array:\n";
-    //printArray(a, NUM);
-
+    CALI_MARK_BEGIN(comm);
+    CALI_MARK_BEGIN(comm_large);
     // Scatter and split array evenly for each process
     MPI_Scatter(a, NUM / numtasks, MPI_INT, local, NUM / numtasks, MPI_INT, 0, MPI_COMM_WORLD);
     local_size = NUM / numtasks;
+    CALI_MARK_END(comm_large);
+    CALI_MARK_END(comm);
 
     // Parent process
     if (rank == 0) {
-        double begin, end, time_spent;
-        begin = MPI_Wtime();
 
         // Sequential merge sort
+        CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_large);
         mergesort(local, 0, local_size - 1);
+        CALI_MARK_END(comp_large);
+        CALI_MARK_END(comp);
 
         // Push sorted local array to global array
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(comm_large);
         l2g(global, local, local_size);
         int j, recv_size = local_size;
         int* buff = new int[recv_size];
+
 
         for (j = 0; j < numtasks - 1; j++) {
             // Receive sorted array from child process
             MPI_Recv(buff, recv_size, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &Stat);
 
             // Merge received array and global array together
-            comp = mergeArrays(global, buff, local_size, recv_size);
+            CALI_MARK_BEGIN(comp);
+            CALI_MARK_BEGIN(comp_large);
+            comp_array = mergeArrays(global, buff, local_size, recv_size);
             local_size += recv_size;
 
             // Pointer to Array
-            p2a(global, comp, local_size);
-            delete[] comp; // Free memory for merged array
+            p2a(global, comp_array, local_size);
+            delete[] comp_array;
+            CALI_MARK_END(comp_large);
+            CALI_MARK_END(comp);
         }
+        CALI_MARK_END(comm_large);
+        CALI_MARK_END(comm);
 
-        end = MPI_Wtime();
-        time_spent = end - begin;
-
-        std::cout << "Sorted global array (Process " << rank << "):\n";
+        //std::cout << "Sorted global array (Process " << rank << "):\n";
         //printArray(global, local_size);
-        std::cout << "Time spent (Parallel): " << time_spent << " seconds\n";
+        //std::cout << "Time spent (Parallel): " << time_spent << " seconds\n";
 
-        begin = MPI_Wtime();
-        // Time sequential merge sort on the same set of numbers
-        mergesort(a, 0, NUM - 1);
-        end = MPI_Wtime();
-        time_spent = end - begin;
-        std::cout << "Sorted global array (Process " << rank << "):\n";
-        //printArray(global, local_size);
-        std::cout << "Time spent (Non-Parallel): " << time_spent << " seconds\n";
+        //correctness check
+        CALI_MARK_BEGIN(correctness_check);
+        if (!isSorted(global, local_size)) {
+            std::cout << "Array is NOT sorted correctly.\n";
+        }
+        CALI_MARK_END(correctness_check);
 
         delete[] buff; // Free memory
     }
     // Child process
     else {
+        CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_large);
         mergesort(local, 0, local_size - 1);
+        CALI_MARK_END(comp_large);
+        CALI_MARK_END(comp);
+
         // Send sorted array to parent process
-        MPI_Send(local, local_size, MPI_INT, 0, 0, MPI_COMM_WORLD);
+        CALI_MARK_BEGIN(comm);
+        CALI_MARK_BEGIN(comm_large);
+        MPI_Send(local, local_size, MPI_INT, 0, 0, MPI_COMM_WORLD); 
+        CALI_MARK_END(comm_large);
+        CALI_MARK_END(comm);
     }
 
-    delete[] local;   // Free local array
-    delete[] a;       // Free original array
-    delete[] global;  // Free global array
+    delete[] local;
+    delete[] a;
+    delete[] global;
+
+    CALI_MARK_END(main);
+
+    // Adiak annotations
+    adiak::launchdate();
+    adiak::libraries();
+    adiak::cmdline();
+    adiak::clustername();
+    adiak::value("algorithm", "merge");
+    adiak::value("programming_model", "mpi");
+    adiak::value("data_type", "int");
+    adiak::value("size_of_data_type", sizeof(int));
+    adiak::value("input_size", NUM);
+    adiak::value("input_type", type);
+    adiak::value("num_procs", numtasks);
+    adiak::value("scalability", "strong");
+    adiak::value("group_num", 11);
+    adiak::value("implementation_source", "handwritten");
+
+    mgr.stop();
+    mgr.flush();
 
     MPI_Finalize();
+
     return 0;
 }
 
-// Merge sort
+
 void mergesort(int array[], int left, int right) {
     if (left < right) {
         int middle = (left + right) / 2;
@@ -147,7 +210,6 @@ void mergesort(int array[], int left, int right) {
     }
 }
 
-// Merge function
 void merge(int array[], int left, int middle, int right) {
     int* temp = new int[right - left + 1];
     int i = left, j = middle + 1, k = 0;
@@ -167,7 +229,7 @@ void merge(int array[], int left, int middle, int right) {
         array[left + k] = temp[k];
     }
 
-    delete[] temp; // Free temporary array
+    delete[] temp;
 }
 
 // Merge two arrays
@@ -211,4 +273,13 @@ void printArray(int array[], int size) {
         std::cout << array[i] << " ";
     }
     std::cout << "\n";
+}
+
+bool isSorted(int array[], int size) {
+    for (int i = 1; i < size; i++) {
+        if (array[i] < array[i - 1]) {
+            return false;
+        }
+    }
+    return true;
 }
