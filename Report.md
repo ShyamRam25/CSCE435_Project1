@@ -321,6 +321,29 @@ CALI_MARK_END("comp");
 └─ 0.121 MPI_Comm_dup
 ```
 
+### **Bitonicsort Calltree**:
+```
+0.567 main
+├─ 0.561 main
+│  ├─ 0.000 MPI_Init
+│  ├─ 0.000 data_init_runtime
+│  ├─ 0.002 comm
+│  │  └─ 0.002 comm_large
+│  │     ├─ 0.002 MPI_Scatter
+│  │     └─ 0.000 MPI_Gather
+│  ├─ 0.030 comp
+│  │  └─ 0.030 comp_large
+│  │     └─ 0.028 comp_small
+│  │        ├─ 0.019 comm_small
+│  │        │  └─ 0.000 MPI_Sendrecv
+│  │        └─ 0.009 MPI_Barrier
+│  └─ 0.000 correctness_check
+├─ 0.000 MPI_Finalize
+├─ 0.000 MPI_Initialized
+├─ 0.000 MPI_Finalized
+└─ 0.000 MPI_Comm_dup
+```
+
 ### 3b. Collect Metadata
 
 Have the following code in your programs to collect metadata:
@@ -360,6 +383,13 @@ They will show up in the `Thicket.metadata` if the caliper file is read into Thi
 ### Radixsort Metadata Image
 
 <img width="893" src="/image/radix_metadata.png">
+
+
+### Bitonicsort Metadata Image
+
+<img width="893" src="/image/bitonic_metadata.png">
+
+
 
 ## 4. Performance evaluation
 
