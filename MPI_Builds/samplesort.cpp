@@ -91,6 +91,7 @@ int main(int argc, char* argv[]) {
     CALI_MARK_END("data_init_runtime");
 
     /**** Sending Data ****/
+    CALI_MARK_BEGIN("comm");
     MPI_Bcast(&NoofElements, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if ((NoofElements % Numprocs) != 0) {
         if (MyRank == Root)
@@ -103,14 +104,28 @@ int main(int argc, char* argv[]) {
     InputData = new int[NoofElements_Bloc];
 
     // Caliper region for communication
-    CALI_MARK_BEGIN("comm");
+    CALI_MARK_BEGIN("comm_small");
     MPI_Scatter(Input, NoofElements_Bloc, MPI_INT, InputData, NoofElements_Bloc, MPI_INT, Root, MPI_COMM_WORLD);
+    CALI_MARK_END("comm_small");
+
     CALI_MARK_END("comm");
 
     /**** Sorting Locally ****/
     // Caliper region for computation
     CALI_MARK_BEGIN("comp");
-    std::qsort(InputData, NoofElements_Bloc, sizeof(int), intcompare);
+    
+    // Start computation region for small data
+    if (NoofElements_Bloc <= 100) { // assuming 100 is the threshold for small data
+        CALI_MARK_BEGIN("comp_small");
+        std::qsort(InputData, NoofElements_Bloc, sizeof(int), intcompare);
+        CALI_MARK_END("comp_small");
+    } else {
+        CALI_MARK_BEGIN("comp_large");
+        std::qsort(InputData, NoofElements_Bloc, sizeof(int), intcompare);
+        CALI_MARK_END("comp_large");
+    }
+    
+    // End comp region
     CALI_MARK_END("comp");
     
     /**** Choosing Local Splitters ****/
@@ -159,9 +174,9 @@ int main(int argc, char* argv[]) {
 
     BucketBuffer = new int[(NoofElements_Bloc + 1) * Numprocs];
 
-    CALI_MARK_BEGIN("alltoall");
+    CALI_MARK_BEGIN("comm");
     MPI_Alltoall(Buckets, NoofElements_Bloc + 1, MPI_INT, BucketBuffer, NoofElements_Bloc + 1, MPI_INT, MPI_COMM_WORLD);
-    CALI_MARK_END("alltoall");
+    CALI_MARK_END("comm");
 
     /**** Rearranging BucketBuffer ****/
     LocalBucket = new int[2 * NoofElements / Numprocs];
@@ -177,7 +192,15 @@ int main(int argc, char* argv[]) {
 
     /**** Sorting Local Buckets using qsort ****/
     NoElementsToSort = LocalBucket[0];
-    std::qsort(&LocalBucket[1], NoElementsToSort, sizeof(int), intcompare);
+    if (NoElementsToSort <= 100) {
+        CALI_MARK_BEGIN("comp_small");
+        std::qsort(&LocalBucket[1], NoElementsToSort, sizeof(int), intcompare);
+        CALI_MARK_END("comp_small");
+    } else {
+        CALI_MARK_BEGIN("comp_large");
+        std::qsort(&LocalBucket[1], NoElementsToSort, sizeof(int), intcompare);
+        CALI_MARK_END("comp_large");
+    }
 
     /**** Gathering sorted sub blocks at root ****/
     if (MyRank == Root) {
@@ -185,9 +208,9 @@ int main(int argc, char* argv[]) {
         Output = new int[NoofElements];
     }
 
-    CALI_MARK_BEGIN("gather");
+    CALI_MARK_BEGIN("comm");
     MPI_Gather(LocalBucket, 2 * NoofElements_Bloc, MPI_INT, OutputBuffer, 2 * NoofElements_Bloc, MPI_INT, Root, MPI_COMM_WORLD);
-    CALI_MARK_END("gather");
+    CALI_MARK_END("comm");
 
     /**** Rearranging output buffer ****/
     if (MyRank == Root) {
