@@ -283,21 +283,21 @@ CALI_MARK_END("comp");
 
 ### **Mergesort Calltree**:
 ```
-4.140 main
-├─ 0.007 data_init_runtime
-├─ 0.000 MPI_Init
-├─ 0.000 comm
-│  └─ 0.000 comm_large
-│     ├─ 0.010 MPI_Scatter
-│     ├─ 0.002 MPI_Recv
-│     └─ 0.000 MPI_Send
-├─ 0.000 comp
-│  └─ 0.017 comp_large
-├─ 0.000 correctness_check
+0.566 main
+├─ 0.004 MPI_Comm_dup
 ├─ 0.000 MPI_Finalize
-├─ 0.000 MPI_Initialized
 ├─ 0.000 MPI_Finalized
-└─ 0.032 MPI_Comm_dup
+├─ 0.000 MPI_Init
+├─ 0.000 MPI_Initialized
+├─ 0.008 comm
+│  └─ 0.008 comm_large
+│     ├─ 0.002 MPI_Recv
+│     ├─ 0.007 MPI_Scatter
+│     └─ 0.001 MPI_Send
+├─ 0.002 comp
+│  └─ 0.002 comp_large
+├─ 0.000 correctness_check
+└─ 0.000 data_init_runtime
 ```
 
 
@@ -350,6 +350,11 @@ They will show up in the `Thicket.metadata` if the caliper file is read into Thi
 ### Samplesort Metadata Image
 
 <img width="893" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/8cb51b37-9263-44c3-bcc1-f72ccaf5359a">
+
+
+### Mergesort Metadata Image
+
+<img width="893" alt="samplesort_metadata_image" src="/image/mergesort_metadata.png">
 
 
 ### Radixsort Metadata Image
