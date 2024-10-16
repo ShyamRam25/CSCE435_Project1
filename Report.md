@@ -280,6 +280,27 @@ CALI_MARK_END("comp");
 └─ 0.011 MPI_Comm_dup
 ```
 
+
+### **Samplesort Calltree**:
+```
+4.140 main
+├─ 0.007 data_init_runtime
+├─ 0.000 MPI_Init
+├─ 0.000 comm
+│  └─ 0.000 comm_large
+│     ├─ 0.010 MPI_Scatter
+│     ├─ 0.002 MPI_Recv
+│     └─ 0.000 MPI_Send
+├─ 0.000 comp
+│  └─ 0.017 comp_large
+├─ 0.000 correctness_check
+├─ 0.000 MPI_Finalize
+├─ 0.000 MPI_Initialized
+├─ 0.000 MPI_Finalized
+└─ 0.032 MPI_Comm_dup
+```
+
+
 ### 3b. Collect Metadata
 
 Have the following code in your programs to collect metadata:
