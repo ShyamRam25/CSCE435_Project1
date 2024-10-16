@@ -259,29 +259,29 @@ CALI_MARK_END("comp");
 
 ### **Samplesort Calltree**:
 ```
-3.234 main
+4.231 main
 ├─ 0.000 MPI_Init
-├─ 0.000 data_init_runtime
+├─ 0.002 data_init_runtime
 ├─ 0.000 comm
-│  ├─ 0.016 MPI_Bcast
+│  ├─ 0.044 MPI_Bcast
 │  ├─ 0.000 comm_small
-│  │  └─ 0.000 MPI_Scatter
-│  ├─ 0.000 MPI_Alltoall
-│  └─ 0.000 MPI_Gather
+│  │  └─ 0.008 MPI_Scatter
+│  ├─ 0.013 MPI_Alltoall
+│  └─ 0.003 MPI_Gather
 ├─ 0.000 comp
-│  └─ 0.000 comp_small
-├─ 0.003 MPI_Gather
-├─ 0.000 MPI_Bcast
-├─ 0.000 comp_small
+│  └─ 0.017 comp_large
+├─ 0.006 MPI_Gather
+├─ 0.004 MPI_Bcast
+├─ 0.005 comp_large
 ├─ 0.000 correctness_check
 ├─ 0.000 MPI_Finalize
 ├─ 0.000 MPI_Initialized
 ├─ 0.000 MPI_Finalized
-└─ 0.011 MPI_Comm_dup
+└─ 0.026 MPI_Comm_dup
 ```
 
 
-### **Samplesort Calltree**:
+### **Mergesort Calltree**:
 ```
 4.140 main
 ├─ 0.007 data_init_runtime
