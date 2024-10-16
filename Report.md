@@ -319,10 +319,12 @@ CALI_MARK_END("comp");
 ├─ 0.000 MPI_Initialized
 ├─ 0.000 MPI_Finalized
 └─ 0.121 MPI_Comm_dup
+```
 
 ### 3b. Collect Metadata
 
 Have the following code in your programs to collect metadata:
+
 ```
 adiak::init(NULL);
 adiak::launchdate();    // launch date of the job
@@ -344,6 +346,12 @@ adiak::value("implementation_source", implementation_source); // Where you got t
 They will show up in the `Thicket.metadata` if the caliper file is read into Thicket.
 
 ### **See the `Builds/` directory to find the correct Caliper configurations to get the performance metrics.** They will show up in the `Thicket.dataframe` when the Caliper file is read into Thicket.
+
+### Samplesort Metadata Image
+
+<img width="893" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/8cb51b37-9263-44c3-bcc1-f72ccaf5359a">
+
+
 ## 4. Performance evaluation
 
 Include detailed analysis of computation performance, communication performance. 
