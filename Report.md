@@ -352,6 +352,10 @@ They will show up in the `Thicket.metadata` if the caliper file is read into Thi
 <img width="893" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/8cb51b37-9263-44c3-bcc1-f72ccaf5359a">
 
 
+### Radixsort Metadata Image
+
+<img width="893" src="/image/radix_metadata.png">
+
 ## 4. Performance evaluation
 
 Include detailed analysis of computation performance, communication performance. 
