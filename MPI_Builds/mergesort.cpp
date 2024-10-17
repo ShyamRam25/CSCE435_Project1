@@ -105,9 +105,13 @@ int main(int argc, char* argv[]) {
         CALI_MARK_END(comp);
 
         // Push sorted local array to global array
+        CALI_MARK_BEGIN(comp);
+        CALI_MARK_BEGIN(comp_large);
         l2g(global, local, local_size);
         int j, recv_size = local_size;
         int* buff = new int[recv_size];
+        CALI_MARK_END(comp_large);
+        CALI_MARK_END(comp);
 
 
         for (j = 0; j < numtasks - 1; j++) {
