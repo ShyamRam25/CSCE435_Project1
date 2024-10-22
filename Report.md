@@ -428,6 +428,25 @@ perform runs that invoke algorithm2 for Sorted, ReverseSorted, and Random data).
     - Total time
     - Variance time/rank
 
+### Samplesort
+
+#### Note: 512 and 1024 processors did not work because of HPRC Hydra Errors, so all graphs are scaled to 256 processors
+
+<img width="500" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/6d9dcea5-9ac4-4c39-a142-8a8d09f8b988">
+
+The computation time steadily decreases in my algorithm since an increase in the number of processes will more efficiently do the swaps and sorting needed.
+
+<img width="500" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/0c5a773e-cb6d-499a-82e6-6d4c64ec0eda">
+
+
+<img width="500" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/ce8aedea-652e-4576-a0ee-79bb15e0e221">
+
+<img width="500" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/9fe5f26c-8dfb-44b1-9032-bd022fc285ab">
+
+
+<img width="500" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/fac87bb6-7eaa-45fd-ac4f-4b18dd93da3d">
+<img width="500" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/6ba0d1bb-10f8-4e6f-a878-92d251ffe72a">
+
 
 ## 5. Presentation
 Plots for the presentation should be as follows:
