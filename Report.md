@@ -453,6 +453,12 @@ The communication plot is very standard, especially for the algorithm's use on l
 
 Lastly, much like in previous lab programs, the overall time for computing the algorithm goes down as # of processors increases in larger sample sizes, but will go up in smaller sizes. This is due to the communication and initialization pieces of the algorithm, which often trump the computation part in smaller array sizes, causing the overall time to increase as processor numbers do. 
 
+### Merge Sort
+
+### Radix Sort
+
+### Bitonic Sort
+
 ## 5. Presentation
 Plots for the presentation should be as follows:
 - For each implementation:
