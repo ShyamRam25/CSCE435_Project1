@@ -174,12 +174,6 @@ algorithm
 helper.h
 /scratch/user/andrew.mlin27/CSCE435_Project1/MPI_Builds/helper.h
 
-/scratch/user/andrew.mlin27/CSCE435_Project1/MPI_Builds/helper.cpp
-cstdlib
--
-ctime
--
-
 /scratch/user/andrew.mlin27/CSCE435_Project1/MPI_Builds/helper.h
 
 /sw/eb/sw/impi/2019.9.304-iccifort-2020.4.304/intel64/include/mpi.h
