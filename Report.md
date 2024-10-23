@@ -457,17 +457,17 @@ Lastly, much like in previous lab programs, the overall time for computing the a
 
 #### **Note: 512 and 1024 processors did not work because of HPRC Hydra Errors, so all graphs are scaled to 256 processors**
 
-<img width="500" alt="Strong Scaling Computation" src="">
+<img width="500" alt="Strong Scaling Computation" src="/image/StrongScalingComp.png">
 
-<img width="500" alt="Strong Scaling Communication" src="">
+<img width="500" alt="Strong Scaling Communication" src="/image/StrongScalingComm.png">
 
 As the number of processors increased from 2 to 64, the average time spent in computation sharply decreases. This makese sense because the work of the computation is distributed across more and more processors. As we continue to add more processors, we see diminishing returns as there is too much overhead to warrant distributing the array among more processors. Meanwhile, the average time spent in computation generally increases as the number of processors increase.
 
-<img width="500" alt="Speedup" src="">
+<img width="500" alt="Speedup" src="/image/Speedup.png">
 
 The speedup for computation increases sharply at first as the workload is efficiently distributed across more processors, but then gradually decreases due to diminishing returns, where each processor receives less work, and overheads such as synchronization and communication start to outweigh the benefits. 
 
-<img width="500" alt="Weak Scaling" src="">
+<img width="500" alt="Weak Scaling" src="/image/WeakScaling.png">
 
 The benefits of parallel computing can clearly be seen as the problem size becomes increasinly large. Computation time benefitted most across multiple processors for an array size of 2^28. This makes sense as larger problem sizes allow each processor to have a substantial amount of work to do, maximizing the efficiency of parallelism.
 
