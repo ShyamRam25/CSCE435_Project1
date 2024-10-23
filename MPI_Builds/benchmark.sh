@@ -16,13 +16,13 @@ replace_mem="MEM_NEEDED"
 # Input combinations
 input_sizes=(65536 262144 1048576 4194304 16777216 67108864 268435456)  # 2^16 to 2^28
 input_types=("random" "sorted" "reverse" "perturbed")
-num_processes=(2 4 8 16 32 64 128 256 512 1024)
+# num_processes=(2 4 8 16 32 64 128 256 512 1024)
 
 
 # Loop over input sizes, types, and number of processes
 for size in "${input_sizes[@]}"; do
    for type in "${input_types[@]}"; do
-        p=4
+        p=512
 
         # Determine number of nodes needed
         num_nodes=$(($p / $cores_per_node))
