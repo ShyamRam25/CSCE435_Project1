@@ -461,7 +461,7 @@ Lastly, much like in previous lab programs, the overall time for computing the a
 
 <img width="500" alt="Strong Scaling Communication" src="/image/StrongScalingComm2.png">
 
-As the number of processors increased from 2 to 64, the average time spent in computation sharply decreases. This makese sense because the work of the computation is distributed across more and more processors. As we continue to add more processors, we see diminishing returns as there is too much overhead to warrant distributing the array among more processors. Meanwhile, the average time spent in computation generally increases as the number of processors increase.
+As the number of processors increased from 2 to 64, the average time spent in computation sharply decreases. This makese sense because the work of the computation is distributed across more and more processors. As we continue to add more processors, we see diminishing returns as there is too much overhead to warrant distributing the array among more processors. Meanwhile, the average time spent in communication generally increases as the number of processors increase.
 
 <img width="500" alt="Speedup" src="/image/Speedup2.png">
 
