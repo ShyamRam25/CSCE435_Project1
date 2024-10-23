@@ -485,16 +485,29 @@ Speed up: The speed up is significant when we first introducing more processors,
 
 ### Bitonic Sort
 
+
 <img width="500" src="/image/bitonic_avg_268435456.png">
+
+Average times vs Number of Processors for Array Size 268435456
+
 The average times show a rapid decrease as the number of processors increases. This drop is due to improved parallelization. 
 
 <img width="500" src="/image/bitonic_total_67108864.png">
+
+Total times vs Number of Processors for Array Size 67108864
+
 The total time decreases steadily up to 128 processors, but for larger processors counts, the performance either levels off or slightly increases. This is because the higher processor counts lead to a point where the cost of communication outweights the benefits of parallel computation. 
 
 <img width="500" src="/image/bitonic_min_16777216.png">
+
+Minimum times vs Number of Processors for Array Size 16777216
+
 Minimum time drops quickly as the number of processors increase. hese minimum times highlights the most efficient process where sorted and random arrays benefit more from parallelization due to less complex patterns. 
 
 <img width="500" src="/image/bitonic_max_268435456.png">
+
+Maximum times vs Number of Processors for Array Size 268435456
+
 There is a steep decline between 16 and 64 processors. The perturbed data likely causes imbalanced workloads, especially at higher processor counts. 
 
 ## 5. Presentation
