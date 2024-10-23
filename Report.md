@@ -474,6 +474,15 @@ The benefits of parallel computing can clearly be seen as the problem size becom
 
 ### Radix Sort
 
+#### **Note: Some of the cali files failed to generate especially with some of the 2^28 array size and 1024 processor. This is because my program rely on only the root process to do the merging part at the end of the sort when all the worker threads send local sorted arrays back to root
+
+Strong Scaling: The computation time decreases as the number of processor increases and the array size stays constant. As the number of processor doubles, the computation time is cut almost in half everytime.
+
+The communication time increases when the number of the processor increases, this is because more communication between processes are done when there are more processors.
+
+Speed up: The speed up is significant when we first introducing more processors, each processes are being used efficiently. However, as more and more processors are added, we spent more time on communicating between each processes, which affects the efficiently of the overall runtime. 
+
+
 ### Bitonic Sort
 
 ## 5. Presentation
