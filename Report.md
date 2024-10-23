@@ -490,25 +490,25 @@ Speed up: The speed up is significant when we first introducing more processors,
 
 Average times vs Number of Processors for Array Size 268435456
 
-The average times show a rapid decrease as the number of processors increases. This drop is due to improved parallelization. 
+The average times show a rapid decrease as the number of processors increases. This drop is expected as adding more processors initially reduces the computation time significantly due to division of work. However, beyond a certain number of processors, communication overhead costs start to dominate, leading to diminishing returns. 
 
 <img width="500" src="/image/bitonic_total_67108864.png">
 
 Total times vs Number of Processors for Array Size 67108864
 
-The total time decreases steadily up to 128 processors, but for larger processors counts, the performance either levels off or slightly increases. This is because the higher processor counts lead to a point where the cost of communication outweights the benefits of parallel computation. 
+The total time increases steadily up to 128 processors, but for larger processors counts, the performance either levels off or slightly increases. This is because the higher processor counts lead to a point where the cost of communication outweights the benefits of parallel computation. 
 
 <img width="500" src="/image/bitonic_min_16777216.png">
 
 Minimum times vs Number of Processors for Array Size 16777216
 
-Minimum time drops quickly as the number of processors increase. hese minimum times highlights the most efficient process where sorted and random arrays benefit more from parallelization due to less complex patterns. 
+Minimum time drops quickly as the number of processors increase. These minimum times highlight the most efficient process. The rapid decline is expected as the workload is distributed. 
 
 <img width="500" src="/image/bitonic_max_268435456.png">
 
 Maximum times vs Number of Processors for Array Size 268435456
 
-There is a steep decline between 16 and 64 processors. The perturbed data likely causes imbalanced workloads, especially at higher processor counts. 
+There is a steep decline between 16 and 64 processors. The maximum times represent the worst-case performance. The flatening of the graph may be due to diminishing returns, where adding more processors does not significantly reduce computation time. 
 
 ## 5. Presentation
 Plots for the presentation should be as follows:
