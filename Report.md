@@ -477,11 +477,14 @@ The benefits of parallel computing can clearly be seen as the problem size becom
 #### **Note: Some of the cali files failed to generate especially with some of the 2^28 array size and 1024 processor. This is because my program rely on only the root process to do the merging part at the end of the sort when all the worker threads send local sorted arrays back to root
 
 Strong Scaling: The computation time decreases as the number of processor increases and the array size stays constant. As the number of processor doubles, the computation time is cut almost in half everytime.
+<img width="978" alt="Screenshot 2024-10-24 at 2 15 45 PM" src="https://github.com/user-attachments/assets/60b36ce7-73ef-4f44-bb6f-5d8247d1affa">
 
 The communication time increases when the number of the processor increases, this is because more communication between processes are done when there are more processors.
+<img width="621" alt="Screenshot 2024-10-24 at 2 18 25 PM" src="https://github.com/user-attachments/assets/62dd86a1-cae2-4e02-be48-70aeeca6c2c4">
 
-Speed up: The speed up is significant when we first introducing more processors, each processes are being used efficiently. However, as more and more processors are added, we spent more time on communicating between each processes, which affects the efficiently of the overall runtime. 
-
+Speed up: The speed up is significant when we first introducing more processors, each processes are being used efficiently. However, as more and more processors are added, we spent more time on 
+municating between each processes, which affects the efficiently of the overall runtime. 
+com<img width="668" alt="Screenshot 2024-10-24 at 2 19 22 PM" src="https://github.com/user-attachments/assets/d615eb5a-cd3b-4ea5-8048-9998437ecc03">
 
 ### Bitonic Sort
 
