@@ -523,6 +523,70 @@ Plots for the presentation should be as follows:
 
 Analyze these plots and choose a subset to present and explain in your presentation.
 
+### Samplesort Plots
+
+
+<img width="500" src="https://github.com/user-attachments/assets/efc606b8-38d3-42a0-8454-16bedf0ab580">
+<img width="500" src="https://github.com/user-attachments/assets/57b06c6c-9606-4434-a777-a3666cf1f7fc">
+<img width="500" src="https://github.com/user-attachments/assets/06faebec-0170-4b53-be78-29d9949a5455">
+<img width="500" src="https://github.com/user-attachments/assets/0530057d-25ae-4b1b-83bc-c57001a1efdc">
+<img width="500" src="https://github.com/user-attachments/assets/6721a480-e6fb-470e-96d0-e9b7a00fe45b">
+<img width="500" src="https://github.com/user-attachments/assets/2b6fce84-577a-40b8-9fd4-b0ef91e7694f">
+<img width="500" src="https://github.com/user-attachments/assets/40093def-e45d-4f66-bee4-d5df8fa74491">
+<img width="500" src="https://github.com/user-attachments/assets/d9527853-7a5b-42c6-b053-721a8c8a6c53">
+<img width="500" src="https://github.com/user-attachments/assets/2338492e-07ed-44c8-ad91-4417c9d55b05">
+<img width="500" src="https://github.com/user-attachments/assets/f539dcbd-5f90-4434-9bb7-eefdf3718e13">
+<img width="500" src="https://github.com/user-attachments/assets/1fc3bd5f-3ab3-4a9c-b844-8662cc04ffc3">
+<img width="500" src="https://github.com/user-attachments/assets/8057b4f5-1d87-43dd-93cb-e886b68f5f7a">
+<img width="500" src="https://github.com/user-attachments/assets/dbe22811-e24a-4bc4-b554-3234aae30fb8">
+<img width="500" src="https://github.com/user-attachments/assets/ab984ff4-b369-4e41-81c9-27cca823a27d">
+<img width="500" src="https://github.com/user-attachments/assets/e2629958-64f5-4ba9-ac2e-075f52a2826b">
+<img width="500" src="https://github.com/user-attachments/assets/21a2c439-8c39-4a5d-b7cd-85d23abbbab3">
+<img width="500" src="https://github.com/user-attachments/assets/3e481e10-bc6d-4da1-b326-f5993f049bbb">
+<img width="500" src="https://github.com/user-attachments/assets/bb2b99a6-ce1d-4349-bb5f-fee8dea6a9b8">
+<img width="500" src="https://github.com/user-attachments/assets/48ef20d0-4a32-4470-a2f1-e0ab8db89219">
+<img width="500" src="https://github.com/user-attachments/assets/c6e9a964-2443-4f9c-aaf3-25d0d0cf8a70">
+<img width="500" src="https://github.com/user-attachments/assets/08de9634-cbf4-4309-87c9-947cd66163d1">
+<img width="500" src="https://github.com/user-attachments/assets/c7d326e0-7b43-4591-bd0c-dd88224b51cf">
+<img width="500" src="https://github.com/user-attachments/assets/6df7577d-e1c1-4f56-a819-8b8019c4f92b">
+<img width="500" src="https://github.com/user-attachments/assets/4b497d11-faf4-459a-a299-9efeef590124">
+<img width="500" src="https://github.com/user-attachments/assets/aff6f242-8be2-4797-bf20-c6ac5b02a49b">
+<img width="500" src="https://github.com/user-attachments/assets/4a4138a7-ee4a-4273-b7a7-d999e5c12532">
+<img width="500" src="https://github.com/user-attachments/assets/5d3e7121-9f34-4529-95f2-0baafb0a33db">
+<img width="500" src="https://github.com/user-attachments/assets/5391f091-adc4-452e-9d59-19da4d6064ac">
+<img width="500" src="https://github.com/user-attachments/assets/d1a4c84a-d521-458f-b7e8-5593881677e8">
+<img width="500" src="https://github.com/user-attachments/assets/eba4ed09-f969-4240-a77f-69de35f52ed5">
+<img width="500" src="https://github.com/user-attachments/assets/a5d93c05-9d34-417d-9f04-39620f153f69">
+<img width="500" src="https://github.com/user-attachments/assets/d9a50ffd-e893-4b56-974e-cbc29f824979">
+<img width="500" src="https://github.com/user-attachments/assets/b4d51a72-8d1e-4ee3-8a57-54a9cfc22c11">
+<img width="500" src="https://github.com/user-attachments/assets/61388a1e-2f6a-4dc0-9d8d-4b7b79d5b4e4">
+<img width="500" src="https://github.com/user-attachments/assets/617aca0a-cda7-4d0f-b6d9-fbeb45c8718c">
+<img width="500" src="https://github.com/user-attachments/assets/935da9f2-19a5-43f3-b0bd-d89972b9763b">
+<img width="500" src="https://github.com/user-attachments/assets/7de918f2-5a4e-4c2c-aee5-997ddc263c67">
+<img width="500" src="https://github.com/user-attachments/assets/bf4dac9a-e423-4989-9657-da9b62705f1b">
+<img width="500" src="https://github.com/user-attachments/assets/65c86331-975f-435e-854d-3824a5435c6d">
+<img width="500" src="https://github.com/user-attachments/assets/05094aa7-01e6-4b57-a54b-26daeac6e808">
+<img width="500" src="https://github.com/user-attachments/assets/08b53a48-2884-48c3-8e1c-e8656b1c34d9">
+<img width="500" src="https://github.com/user-attachments/assets/8b956f86-028e-4ae0-9d3d-b502bd8cb168">
+<img width="500" src="https://github.com/user-attachments/assets/671f9125-1c01-432f-ad7c-5e50093b0c12">
+<img width="500" src="https://github.com/user-attachments/assets/004cb4c7-016b-4fd4-bd33-cf152a5f75a3">
+
+
+### Mergesort Plots
+
+
+
+
+
+### Bitonic Sort Plots
+
+
+
+
+
+### Radix Sort Plots
+
+
 ## 6. Final Report
 Submit a zip named `TeamX.zip` where `X` is your team number. The zip should contain the following files:
 - Algorithms: Directory of source code of your algorithms.
