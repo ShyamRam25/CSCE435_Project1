@@ -523,7 +523,16 @@ Plots for the presentation should be as follows:
 
 Analyze these plots and choose a subset to present and explain in your presentation.
 
-### Samplesort Plots
+
+
+## 6. Final Report
+Submit a zip named `TeamX.zip` where `X` is your team number. The zip should contain the following files:
+- Algorithms: Directory of source code of your algorithms.
+- Data: All `.cali` files used to generate the plots seperated by algorithm/implementation.
+- Jupyter notebook: The Jupyter notebook(s) used to generate the plots for the report.
+- Report.md
+
+- ### Samplesort Plots
 
 
 <img width="500" src="https://github.com/user-attachments/assets/efc606b8-38d3-42a0-8454-16bedf0ab580">
@@ -585,11 +594,4 @@ Analyze these plots and choose a subset to present and explain in your presentat
 
 
 ### Radix Sort Plots
-
-
-## 6. Final Report
-Submit a zip named `TeamX.zip` where `X` is your team number. The zip should contain the following files:
-- Algorithms: Directory of source code of your algorithms.
-- Data: All `.cali` files used to generate the plots seperated by algorithm/implementation.
-- Jupyter notebook: The Jupyter notebook(s) used to generate the plots for the report.
-- Report.md
+The reason my speed up for main is 0 after 128 processors is because I used the total time for main functions to calculate the speed up, so the communication time dominates the performance of main, in the following graphs I used Max time to calculate the speed up for main, which made more sense for the result of speed up.
