@@ -532,8 +532,7 @@ Submit a zip named `TeamX.zip` where `X` is your team number. The zip should con
 - Jupyter notebook: The Jupyter notebook(s) used to generate the plots for the report.
 - Report.md
 
-- ### Samplesort Plots
-
+### Samplesort Plots
 
 <img width="500" src="https://github.com/user-attachments/assets/efc606b8-38d3-42a0-8454-16bedf0ab580">
 <img width="500" src="https://github.com/user-attachments/assets/57b06c6c-9606-4434-a777-a3666cf1f7fc">
