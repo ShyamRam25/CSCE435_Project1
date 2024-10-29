@@ -581,9 +581,63 @@ Submit a zip named `TeamX.zip` where `X` is your team number. The zip should con
 
 
 ### Mergesort Plots
+<img width="500" src="![avg_comp_strong_65536](https://github.com/userattachments/assets/cea18931-d4fa-4793-8c22-dd4d5e01d198)">
+<img width="500" src="![avg_comp_strong_262144](https://github.com/user-attachments/assets/f568daab-8f06-42ab-aef7-9f29cd2ed37b)">
+<img width="500" src="![avg_comp_strong_1048576](https://github.com/user-attachments/assets/ff920f99-56a0-4784-9fd9-dcb2dbdfd60b)">
+<img width="500" src="![avg_comp_strong_4194304](https://github.com/user-attachments/assets/51993a76-fc8f-47b0-8edd-82c48627ab5d)">
+<img width="500" src="![avg_comp_strong_16777216](https://github.com/user-attachments/assets/db4567c1-7e14-452b-bf99-d01a3224b9ce)">
+<img width="500" src="![avg_comp_strong_67108864](https://github.com/user-attachments/assets/3c0ffa63-f14f-47bc-89c8-e6ae17a09d0e)">
+<img width="500" src="![avg_comp_strong_268435456](https://github.com/user-attachments/assets/faccfa92-f1d4-489a-a96b-d59f7a1b1225)">
+
+<img width="500" src="![avg_comp_speedupsorted](https://github.com/user-attachments/assets/3d360660-f13f-4446-86a9-5949906cbc8a)">
+<img width="500" src="![avg_comp_speeduprandom](https://github.com/user-attachments/assets/04745f8b-017b-4754-a708-680aee4ac859)">
+<img width="500" src="![avg_comp_speedupreverse](https://github.com/user-attachments/assets/dc10c40a-bdb9-4e91-b22b-612687405ba9)">
+<img width="500" src="![avg_comp_speedupperturbed](https://github.com/user-attachments/assets/a0e70a4c-a5a9-4761-81ae-3c5f3f63fd39)">
+
+<img width="500" src="![avg_comp_weaksorted](https://github.com/user-attachments/assets/c94737cf-9850-4fd5-b15f-929fbae178f1)">
+<img width="500" src="![avg_comp_weakrandom](https://github.com/user-attachments/assets/3cd64a5d-3a52-45f8-88f7-5549f5fd4798)">
+<img width="500" src="![avg_comp_weakreverse](https://github.com/user-attachments/assets/3fac64e5-90bf-4329-b51d-b5e11f67c87e)">
+<img width="500" src="![avg_comp_weaksorted](https://github.com/user-attachments/assets/727c16b8-c7b3-4d85-8ed4-86f28d7fdf4e)">
 
 
 
+<img width="500" src="![avg_comm_strong65536](https://github.com/user-attachments/assets/d0482c0a-2c0c-40e1-9ca0-ea834e016042)">
+<img width="500" src="![avg_comm_strong262144](https://github.com/user-attachments/assets/469b0db2-8814-4e75-8aef-57fb977d170d)">
+<img width="500" src="![avg_comm_strong1048576](https://github.com/user-attachments/assets/7bcef8a3-9c79-482e-bec3-05c52e4d6d1c)">
+<img width="500" src="![avg_comm_strong4194304](https://github.com/user-attachments/assets/a35926b3-5a89-43b5-90a1-ecef39cb9ad8)">
+<img width="500" src="![avg_comm_strong16777216](https://github.com/user-attachments/assets/fabfed0c-7722-47f0-b176-e9a1737bb33f)">
+<img width="500" src="![avg_comm_strong67108864](https://github.com/user-attachments/assets/c1146b23-b468-4409-a58c-a803b26a1532)">
+<img width="500" src="![avg_comm_strong268435456](https://github.com/user-attachments/assets/e713b835-f8be-48da-bac6-bb62e4e775ad)">
+
+<img width="500" src="![avg_comm_speedupsorted](https://github.com/user-attachments/assets/deb2ce6b-03f4-4d5a-90e3-0257c2bbd075)">
+<img width="500" src="![avg_comm_speeduprandom](https://github.com/user-attachments/assets/8b2cb827-02fb-43c1-b0b9-c07d3289a435)">
+<img width="500" src="![avg_comm_speedupreverse](https://github.com/user-attachments/assets/1ff7b64c-f1c6-4966-af67-a7a1542f3132)">
+<img width="500" src="![avg_comm_speedupsorted](https://github.com/user-attachments/assets/32c720d8-6885-4305-960f-fc6bef755917)">
+
+<img width="500" src="![avg_comm_weaksorted](https://github.com/user-attachments/assets/53f60424-d286-498b-8a15-9a1fc814d950)">
+<img width="500" src="![avg_comm_weakrandom](https://github.com/user-attachments/assets/3b50a073-9b77-4343-9d5d-2aca5512e66e)">
+<img width="500" src="![avg_comm_weakreverse](https://github.com/user-attachments/assets/847cdc53-c3cf-41bb-be2c-77f0b02c2d06)">
+<img width="500" src="![avg_comm_weakperturbed](https://github.com/user-attachments/assets/02fc754c-7071-4f0a-9c58-8ad03a4f6434)">
+
+
+
+<img width="500" src="![avg_main_strong65536](https://github.com/user-attachments/assets/828043a9-70fc-4fdb-b8ee-e2be05d4b036)">
+<img width="500" src="![avg_main_strong262144](https://github.com/user-attachments/assets/eb8b7185-2661-4654-aed5-a7c0ef1f7268)">
+<img width="500" src="![avg_main_strong1048576](https://github.com/user-attachments/assets/25adf730-43dc-4a82-8d31-21abf791372f)">
+<img width="500" src="![avg_main_strong4194304](https://github.com/user-attachments/assets/9ad86138-6222-4d02-98a7-ecc09b19c746)">
+<img width="500" src="![avg_main_strong16777216](https://github.com/user-attachments/assets/90136150-0e75-42e0-a09c-653a5db15793)">
+<img width="500" src="![avg_main_strong67108864](https://github.com/user-attachments/assets/a93ca324-93b4-4a1f-8e7f-b378b06ba783)">
+<img width="500" src="![avg_main_strong268435456](https://github.com/user-attachments/assets/15a1876c-f04a-4ea0-bf09-3b3c1c8d8ebc)">
+
+<img width="500" src="![avg_main_speedupsorted](https://github.com/user-attachments/assets/6b6bb8e3-45cf-4c47-81b8-08e9f8f4e37d)">
+<img width="500" src="![avg_main_speeduprandom](https://github.com/user-attachments/assets/c6589599-99d5-4873-9726-9382fdd32637)">
+<img width="500" src="![avg_main_speedupreverse](https://github.com/user-attachments/assets/d386572a-fcda-4daa-a2c8-c0bf2e157b48)">
+<img width="500" src="![avg_main_speedupperturbed](https://github.com/user-attachments/assets/23a0cbb6-072c-4a7c-b42d-0066a15f539b)">
+
+<img width="500" src="![avg_main_weaksorted](https://github.com/user-attachments/assets/e4ae2050-d231-426b-bb8f-6fd049db7a36)">
+<img width="500" src="![avg_main_weakrandom](https://github.com/user-attachments/assets/57c67b13-c770-44fc-9d2c-6b84578dcd14)">
+<img width="500" src="![avg_main_weakreverse](https://github.com/user-attachments/assets/cc98e999-824a-423e-8ee5-6f061c899159)">
+<img width="500" src="![avg_main_weakperturbed](https://github.com/user-attachments/assets/5be5763f-776c-4944-9039-18cf0636078c)">
 
 
 ### Bitonic Sort Plots
