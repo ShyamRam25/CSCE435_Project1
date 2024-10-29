@@ -523,6 +523,8 @@ Plots for the presentation should be as follows:
 
 Analyze these plots and choose a subset to present and explain in your presentation.
 
+#### **Plots for the report are detailed below**
+
 
 
 ## 6. Final Report
@@ -533,6 +535,8 @@ Submit a zip named `TeamX.zip` where `X` is your team number. The zip should con
 - Report.md
 
 ### Samplesort Plots
+
+Some things to note about the Samplesort plots are the spikes in communication, especially for smaller array sizes. Shown in the weak scaling and speedup plots, the communication can greatly vary because of the Gather and Broadcast functions being called, with Samplesort using different buckets to sort the array in "smaller" chunks. As the array gets a larger size the communication overhead is taken over by the speed of computation, leading to a cleaner speedup in the main algorithm (Shown in the last few plots). Samplesort also uses a standardized sorting algorithm to sort each individual bucket, which causes it to have almost all array types to perform similarly, with only random having a slight discrepency with smaller processor numbers. 
 
 <img width="500" src="https://github.com/user-attachments/assets/efc606b8-38d3-42a0-8454-16bedf0ab580">
 <img width="500" src="https://github.com/user-attachments/assets/57b06c6c-9606-4434-a777-a3666cf1f7fc">
