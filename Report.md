@@ -585,7 +585,7 @@ Some things to note about the Samplesort plots are the spikes in communication, 
 
 
 ### Mergesort Plots
-<img width="500" src="![avg_comp_strong_65536](https://github.com/userattachments/assets/cea18931-d4fa-4793-8c22-dd4d5e01d198)">
+<img width="500" src="https://github.com/userattachments/assets/cea18931-d4fa-4793-8c22-dd4d5e01d198">
 <img width="500" src="![avg_comp_strong_262144](https://github.com/user-attachments/assets/f568daab-8f06-42ab-aef7-9f29cd2ed37b)">
 <img width="500" src="![avg_comp_strong_1048576](https://github.com/user-attachments/assets/ff920f99-56a0-4784-9fd9-dcb2dbdfd60b)">
 <img width="500" src="![avg_comp_strong_4194304](https://github.com/user-attachments/assets/51993a76-fc8f-47b0-8edd-82c48627ab5d)">
