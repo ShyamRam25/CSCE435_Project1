@@ -692,7 +692,7 @@ Some things to note about the Samplesort plots are the spikes in communication, 
 
 ### Bitonic Sort Plots
 <img width="500" src="/image/bitonic/comp_strong_max_65536.png">
-<img width="500" src="/image/bitonic/comp_strong_max_242144.png">
+<img width="500" src="/image/bitonic/comp_strong_max_262144.png">
 <img width="500" src="/image/bitonic/comp_strong_max_1048576.png">
 <img width="500" src="/image/bitonic/comp_strong_max_4194304.png">
 <img width="500" src="/image/bitonic/comp_strong_max_16777216.png">
