@@ -644,6 +644,52 @@ Some things to note about the Samplesort plots are the spikes in communication, 
 <img width="500" src="https://github.com/user-attachments/assets/5be5763f-776c-4944-9039-18cf0636078c">
 
 
+
+<img width="500" src="https://github.com/user-attachments/assets/34496131-f031-4ef2-91cc-f735bcb3f74c">
+<img width="500" src="https://github.com/user-attachments/assets/f080eb22-8d13-40b5-8efe-c561c1872e8e">
+<img width="500" src="https://github.com/user-attachments/assets/6f865cb8-5ee7-4e73-9eb1-69d6584b11cc">
+<img width="500" src="https://github.com/user-attachments/assets/89b969fa-c32a-4f72-8ffa-6bd25cf253aa">
+<img width="500" src="https://github.com/user-attachments/assets/6f8080b5-5eca-4e75-85d3-8f4a45a8509c">
+<img width="500" src="https://github.com/user-attachments/assets/c3518cb4-88d9-4bc1-b45a-406bd3ce708a">
+<img width="500" src="https://github.com/user-attachments/assets/2ea02225-51ce-4b94-825f-b1cc57071b97">
+
+<img width="500" src="https://github.com/user-attachments/assets/2a68c5dd-a743-42ee-ac2c-be4d7527c14c">
+<img width="500" src="https://github.com/user-attachments/assets/ccf2acaa-7d1f-429a-8e27-4cf5a445cdd3">
+<img width="500" src="https://github.com/user-attachments/assets/bc9efb33-8091-4b3e-a3a1-2ba5810bb3dd">
+<img width="500" src="https://github.com/user-attachments/assets/ae432dd1-234e-458e-9840-2de7158fc926">
+
+
+
+<img width="500" src="https://github.com/user-attachments/assets/7441cc3f-a97b-4175-b136-66ece83361f7">
+<img width="500" src="https://github.com/user-attachments/assets/85d5220a-1c9a-4ba3-a691-942fbe149934)">
+<img width="500" src="https://github.com/user-attachments/assets/a5cb0358-5d23-4d3e-942e-2b6f5750e379)">
+<img width="500" src="https://github.com/user-attachments/assets/611f40ce-45cc-4f76-a06c-8d4d2dbb69a3)">
+<img width="500" src="https://github.com/user-attachments/assets/71f193b8-d79c-4bf2-ace5-39f7d376c85b)">
+<img width="500" src="https://github.com/user-attachments/assets/2c9abfb3-abc4-4f07-b227-7ac56d7454cd)">
+<img width="500" src="https://github.com/user-attachments/assets/94b29230-45ae-44a1-801c-2d390b550737)">
+
+<img width="500" src="https://github.com/user-attachments/assets/a1d78759-48cb-4fa4-b265-c25d3d626f91">
+<img width="500" src="https://github.com/user-attachments/assets/cddeab45-f523-4ca5-9564-a1c6edba20d7">
+<img width="500" src="https://github.com/user-attachments/assets/d435f388-a03b-402c-9f19-1cb74fde7444">
+<img width="500" src="https://github.com/user-attachments/assets/785ca75e-17ab-4fa3-bb7a-03d667a35ab5">
+
+
+
+<img width="500" src="https://github.com/user-attachments/assets/704a1848-1024-4bd9-8799-f2982aec59e4">
+<img width="500" src="https://github.com/user-attachments/assets/a9f571c1-348d-4900-9b65-8c51bc5ee4a1">
+<img width="500" src="https://github.com/user-attachments/assets/bdeb5a1d-e1c6-4ad6-8af2-64b11584d9d6">
+<img width="500" src="https://github.com/user-attachments/assets/f83906a1-7dfa-4f7e-a2d8-29861d89b07a">
+<img width="500" src="https://github.com/user-attachments/assets/56948f25-dd6b-4786-b930-a9ca30f3a53b">
+<img width="500" src="https://github.com/user-attachments/assets/04358031-d576-4e22-b79a-b5b77146e93a">
+<img width="500" src="https://github.com/user-attachments/assets/ac0c4ac0-112e-4604-923b-e22abe1f1ec4">
+
+<img width="500" src="https://github.com/user-attachments/assets/7417327c-a0a7-42f8-81d7-a685b99456f6">
+<img width="500" src="https://github.com/user-attachments/assets/922d2c57-1190-44e4-b81d-2150fe31a964">
+<img width="500" src="https://github.com/user-attachments/assets/6452906b-356f-47c6-8bfa-aa0e0a2a54b9">
+<img width="500" src="https://github.com/user-attachments/assets/1f4a210b-03ff-438b-8fd4-2d56fa6da489">
+
+
+
 ### Bitonic Sort Plots
 
 
