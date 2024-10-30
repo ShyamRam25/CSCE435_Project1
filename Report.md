@@ -691,6 +691,9 @@ In terms of computation, the average time spent on sorting dropped sharply as pr
 
 
 ### Bitonic Sort Plots
+
+While bitonic sort demonstrates effective parallel scalability with exponentially decreasing computation times as the number of processors increases, its overall performance lags significantly behind the more efficient parallel sorting algorithms like as merge sort, radix sort, and samplesort (see the Computation Large average times of all 4 algorithms overlayed). This is primarily due to bitonic sort's higher algorithmic complexity O(log<sup>2</sup>n) and its structured communication patterns, which require frequent synchronization and data exchange between processors. As the processor count increases, these factors contribute to diminishing returns, where the benefits of additional processors are offset by communication overhead and load balancing challenges. In conclusion, while bitonic sort may serve as a reliable and predictable parallel sorting approach, it is not the optimal choice for high-performance applications requiring maximum efficiency, particularly as data sizes and processor counts grow.
+
 <img width="500" src="https://github.com/user-attachments/assets/56f1c209-4b66-4063-8784-3350c3da7fb4">
 <img width="500" src="https://github.com/user-attachments/assets/07104c18-566b-4b1d-a042-c4e511e9150a">
 <img width="500" src="https://github.com/user-attachments/assets/895bad7b-75f1-4915-98c8-9be579a468a2">
