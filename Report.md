@@ -371,24 +371,16 @@ They will show up in the `Thicket.metadata` if the caliper file is read into Thi
 ### **See the `Builds/` directory to find the correct Caliper configurations to get the performance metrics.** They will show up in the `Thicket.dataframe` when the Caliper file is read into Thicket.
 
 ### Samplesort Metadata Image
-
 <img width="893" alt="Screenshot 2024-10-16 at 12 12 42 PM" src="https://github.com/user-attachments/assets/8cb51b37-9263-44c3-bcc1-f72ccaf5359a">
 
-
 ### Mergesort Metadata Image
-
-<img width="893" alt="samplesort_metadata_image" src="/image/mergesort_metadata.png">
-
+<img width="1080" alt="mergesort_metadata" src="https://github.com/user-attachments/assets/aeb21db4-01ff-4d3e-ad9d-3cbb65e311e6">
 
 ### Radixsort Metadata Image
-
-<img width="893" src="/image/radix_metadata.png">
-
+<img width="893" src="https://github.com/user-attachments/assets/a0f650d7-032c-4b7d-aa23-89a8ef36d21d">
 
 ### Bitonicsort Metadata Image
-
-<img width="893" src="/image/bitonic_metadata.png">
-
+<img width="893" src="https://github.com/user-attachments/assets/69bc26aa-0db8-4168-8979-7777a65f1da0">
 
 
 ## 4. Performance evaluation
@@ -457,17 +449,17 @@ Lastly, much like in previous lab programs, the overall time for computing the a
 
 #### **Note: 512 and 1024 processors did not work because of HPRC Hydra Errors, so all graphs are scaled to 256 processors**
 
-<img width="500" alt="Strong Scaling Computation" src="/image/StrongScalingComp2.png">
+<img width="686" alt="StrongScalingComp2" src="https://github.com/user-attachments/assets/9a519df8-2926-47fb-98eb-a290a790770f">
 
-<img width="500" alt="Strong Scaling Communication" src="/image/StrongScalingComm2.png">
+<img width="681" alt="StrongScalingComm2" src="https://github.com/user-attachments/assets/eea2fa83-6de1-4359-9793-ec96abd24c63">
 
 As the number of processors increased from 2 to 64, the average time spent in computation sharply decreases. This makese sense because the work of the computation is distributed across more and more processors. As we continue to add more processors, we see diminishing returns as there is too much overhead to warrant distributing the array among more processors. Meanwhile, the average time spent in communication generally increases as the number of processors increase.
 
-<img width="500" alt="Speedup" src="/image/Speedup2.png">
+<img width="846" alt="Speedup2" src="https://github.com/user-attachments/assets/a703a34c-4613-49b9-9fd1-bc153e8a1836">
 
 The speedup for computation increases sharply at first as the workload is efficiently distributed across more processors, but then gradually decreases due to diminishing returns, where each processor receives less work, and overheads such as synchronization and communication start to outweigh the benefits. 
 
-<img width="500" alt="Weak Scaling" src="/image/WeakScaling2.png">
+<img width="669" alt="WeakScaling2" src="https://github.com/user-attachments/assets/5c88c001-516e-423a-8ab6-a5abcd88d9b5">
 
 The benefits of parallel computing can clearly be seen as the problem size becomes increasinly large. Computation time benefitted most across multiple processors for an array size of 2^28. This makes sense as larger problem sizes allow each processor to have a substantial amount of work to do, maximizing the efficiency of parallelism.
 
@@ -489,25 +481,25 @@ com<img width="668" alt="Screenshot 2024-10-24 at 2 19 22 PM" src="https://git
 ### Bitonic Sort
 
 
-<img width="500" src="/image/bitonic_avg_268435456.png">
+<img width="500" src="https://github.com/user-attachments/assets/84a87779-54ff-4d72-8cd6-13914fa298a6">
 
 Average times vs Number of Processors for Array Size 268435456
 
 The average times show a rapid decrease as the number of processors increases. This drop is expected as adding more processors initially reduces the computation time significantly due to division of work. However, beyond a certain number of processors, communication overhead costs start to dominate, leading to diminishing returns. 
 
-<img width="500" src="/image/bitonic_total_67108864.png">
+<img width="500" src="https://github.com/user-attachments/assets/a830be82-b107-4e61-bea1-146c26535880">
 
 Total times vs Number of Processors for Array Size 67108864
 
 The total time increases steadily up to 128 processors, but for larger processors counts, the performance either levels off or slightly increases. This is because the higher processor counts lead to a point where the cost of communication outweights the benefits of parallel computation. 
 
-<img width="500" src="/image/bitonic_min_16777216.png">
+<img width="500" src="https://github.com/user-attachments/assets/81b0e528-6267-417b-9dfb-50a5385ff887">
 
 Minimum times vs Number of Processors for Array Size 16777216
 
 Minimum time drops quickly as the number of processors increase. These minimum times highlight the most efficient process. The rapid decline is expected as the workload is distributed. 
 
-<img width="500" src="/image/bitonic_max_268435456.png">
+<img width="500" src="https://github.com/user-attachments/assets/d7ddbec4-8fc6-4709-be75-02b63fad00d5">
 
 Maximum times vs Number of Processors for Array Size 268435456
 
