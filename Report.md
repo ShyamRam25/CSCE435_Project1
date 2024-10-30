@@ -585,6 +585,14 @@ Some things to note about the Samplesort plots are the spikes in communication, 
 
 
 ### Mergesort Plots
+
+The merge sort implementation on Grace faced processor limitations, preventing runs with 1028 processors. All graphs are capped at a maximum of 512 processors. Additionally, for the largest array size of 2^28, merge sort could only run on up to 16 processors.
+
+Communication time between processors—both average and maximum—increased significantly as processor counts grew, largely due to the communication method. In my merge sort implementation, the array was divided evenly across processors, with each processor performing a local, sequential merge sort on its segment. Once sorted, each processor sent its portion back to the root (processor 0). Upon receiving these segments, the root processor executed a merging process to consolidate them into a single array. This step required a loop to merge the arrays and then another pass to copy the result into the global array, further contributing to communication time. 
+
+In terms of computation, the average time spent on sorting dropped sharply as processor count rose, with larger arrays consistently taking longer to sort. Random arrays took slightly more time to sort than other types due to increased comparisons and merging steps. Finally, the speedup graphs showed that as processor counts increased—particularly at 256 and 512—the array sorting became notably faster, demonstrating a clear pattern of improved speedup with larger arrays and processor counts.
+
+
 <img width="500" src="https://github.com/user-attachments/assets/cea18931-d4fa-4793-8c22-dd4d5e01d198">
 <img width="500" src="https://github.com/user-attachments/assets/f568daab-8f06-42ab-aef7-9f29cd2ed37b">
 <img width="500" src="https://github.com/user-attachments/assets/ff920f99-56a0-4784-9fd9-dcb2dbdfd60b">
