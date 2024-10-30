@@ -762,104 +762,104 @@ The reason my speed up for main is 0 (first 4 graphs) after 128 processors is be
 Other observations: 
 1. the speed up graph for computational time showed that the speed up is increasing rapidly up to 128 processors, the benefit of parallelism is reduced because my algorithm is only using the root process to sort all the local sorted arrays once they are gathered to the root processor.
 2. The overall performance of the algorithm is still heavily affected by the communication time
-![(Main: Speedup (total time) vs Number of Processors for sorted](https://github.com/user-attachments/assets/1e2c28fd-943b-4ba9-8c9a-85d8e22f1059)
-![(Main: Speedup (total time) vs Number of Processors for reverse](https://github.com/user-attachments/assets/907ca6f3-3de8-456c-aa09-adbefd78b008)
-![(Main: Speedup (total time) vs Number of Processors for random](https://github.com/user-attachments/assets/f7668443-c57f-4062-9a9b-50ef36abb044)
-![(Main: Speedup (total time) vs Number of Processors for perturbed](https://github.com/user-attachments/assets/509a9a56-f457-4e10-8b6a-41ac5b3848e3)
+<img width="500" src="https://github.com/user-attachments/assets/1e2c28fd-943b-4ba9-8c9a-85d8e22f1059)">
+<img width="500" src="https://github.com/user-attachments/assets/907ca6f3-3de8-456c-aa09-adbefd78b008)">
+<img width="500" src="https://github.com/user-attachments/assets/f7668443-c57f-4062-9a9b-50ef36abb044)">
+<img width="500" src="https://github.com/user-attachments/assets/509a9a56-f457-4e10-8b6a-41ac5b3848e3)">
 
 
-![(Main: Speedup vs Number of Processors for sorted](https://github.com/user-attachments/assets/31133788-cf3b-4559-9c0d-ce127c7022d3)
-![(Main: Speedup vs Number of Processors for reverse](https://github.com/user-attachments/assets/8a7029fb-b6e3-4f9e-bb18-0472377418bd)
-![(Main: Speedup vs Number of Processors for random](https://github.com/user-attachments/assets/2399a7ac-6c56-401c-953a-9e3feb738c32)
-![(Main: Speedup vs Number of Processors for perturbed](https://github.com/user-attachments/assets/783235cd-abb3-4fc8-a26e-46e6e772a254)
+<img width="500" src="https://github.com/user-attachments/assets/31133788-cf3b-4559-9c0d-ce127c7022d3)">
+<img width="500" src="https://github.com/user-attachments/assets/8a7029fb-b6e3-4f9e-bb18-0472377418bd)">
+<img width="500" src="https://github.com/user-attachments/assets/2399a7ac-6c56-401c-953a-9e3feb738c32)">
+<img width="500" src="https://github.com/user-attachments/assets/783235cd-abb3-4fc8-a26e-46e6e772a254)">
 
-![(Main: Weak Scaling vs Number of Processors for sorted](https://github.com/user-attachments/assets/4c33259d-c618-4ef1-bd21-ea31d69c9ec2)
-![(Main: Weak Scaling vs Number of Processors for reverse](https://github.com/user-attachments/assets/8193afa6-5303-4409-9761-a5eb586e933e)
-![(Main: Weak Scaling vs Number of Processors for random](https://github.com/user-attachments/assets/e25f3623-5c5f-4c6c-9638-b2d4e9a12ff1)
-![(Main: Weak Scaling vs Number of Processors for perturbed](https://github.com/user-attachments/assets/bda6b6a1-2b7b-4107-ba0f-abe9ccdd7f74)
-![(Main: Total Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/bd80b33b-35fc-44e3-bbef-e5a70332576e)
-![(Main: Total Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/f14ff53b-2461-41a3-bb0e-c87146923d9d)
-![(Main: Total Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/1372158c-a94a-42a6-8777-39d5d97889a6)
-![(Main: Total Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/141efe4d-79f6-48c1-acd5-3d4b90e1132b)
-![(Main: Total Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/2d9ad167-c675-4e0e-872f-8350d95196df)
-![(Main: Total Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/a78b9973-97c4-48f7-b195-8b42a4854c49)
-![(Main: Total Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/cd7b677e-915a-42eb-ac1d-d27f98ca2eb9)
-![(Main: Speedup vs Number of Processors for sorted](https://github.com/user-attachments/assets/0f1f0bfc-270a-44d7-9d8e-e2921d5de7e7)
-![(Main: Speedup vs Number of Processors for reverse](https://github.com/user-attachments/assets/1b2f6400-6dd7-45e5-93d5-9a8b56cc9699)
-![(Main: Speedup vs Number of Processors for random](https://github.com/user-attachments/assets/4010f5b1-ed74-449e-b5d7-9bdc946e1446)
-![(Main: Speedup vs Number of Processors for perturbed](https://github.com/user-attachments/assets/06991150-5af5-4643-b0df-357b6733ebdb)
-![(Main: Max Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/2a00e611-041c-4a9a-921f-65d0e96eaa53)
-![(Main: Max Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/e4a89669-36ea-44a0-8213-b9e4e59e3082)
-![(Main: Max Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/aef16510-b872-4abf-8120-c9df882f16b2)
-![(Main: Max Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/873e4545-f304-4925-815b-4aed7af6adaa)
-![(Main: Max Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/6c17a5c5-b771-49e0-97d4-b3541e1f8af7)
-![(Main: Max Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/d3d74368-de73-453d-8e31-007dc603901e)
-![(Main: Max Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/f29e6a99-24b6-495b-9105-70fd89aa5138)
-![(Main: Avg Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/aa8bb539-e141-4513-93cd-ccf3ba93466d)
-![(Main: Avg Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/482cf6a2-fce7-40b4-9c0e-d160c3cb432c)
-![(Main: Avg Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/dcd1f065-3413-4290-a6bb-1d747193f043)
-![(Main: Avg Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/5e020919-d2d3-4c8f-b248-bd5b70989534)
-![(Main: Avg Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/f408177f-8080-4d2c-8ddd-bad0664b012d)
-![(Main: Avg Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/77cc6593-5a8f-43d3-8242-85dd74cf7e27)
-![(Main: Avg Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/de12ee7a-7845-4168-b659-90f940bfb08c)
-![(Comp_Large: Weak Scaling vs Number of Processors for sorted](https://github.com/user-attachments/assets/6a972e0a-7707-43fe-a456-59f92e54ae89)
-![(Comp_Large: Weak Scaling vs Number of Processors for reverse](https://github.com/user-attachments/assets/9846585d-36d0-4029-aa54-1cf16591f906)
-![(Comp_Large: Weak Scaling vs Number of Processors for random](https://github.com/user-attachments/assets/5a95373f-0e31-4d7b-8a4b-7b3919494259)
-![(Comp_Large: Weak Scaling vs Number of Processors for perturbed](https://github.com/user-attachments/assets/a310fc13-3606-4ede-b6d3-48f21fc834df)
-![(Comp_Large: Total Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/191ad3a1-7339-49a3-b5b9-16e9f250d4b1)
-![(Comp_Large: Total Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/a34439d2-593e-47ac-b306-53be1b4b2925)
-![(Comp_Large: Total Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/dfa74f2a-d8c9-41b1-96cb-99368b890f4e)
-![(Comp_Large: Total Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/29beab90-781a-4568-b9bd-5fa32d43c49a)
-![(Comp_Large: Total Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/0a71d69a-e4c0-4cf0-83b8-59c4d485933e)
-![(Comp_Large: Total Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/c28a5f59-2971-42ec-8bae-ef3f08f8ceee)
-![(Comp_Large: Total Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/fdbc00b4-fe61-4edc-b6c0-eccace450c40)
-![(Comp_Large: Speedup vs Number of Processors for sorted](https://github.com/user-attachments/assets/b48779fb-3bd3-499d-afbe-f76d53cefaef)
-![(Comp_Large: Speedup vs Number of Processors for reverse](https://github.com/user-attachments/assets/233db646-5fb4-4785-9b90-b00dca985a62)
-![(Comp_Large: Speedup vs Number of Processors for random](https://github.com/user-attachments/assets/b6344473-cb3b-4442-9ad5-438950ad901f)
-![(Comp_Large: Speedup vs Number of Processors for perturbed](https://github.com/user-attachments/assets/38502268-efd5-4809-b981-be53a09f89d3)
-![(Comp_Large: Max Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/d7a36d6c-d2bc-4b5b-aa57-435dfb9f9cc5)
-![(Comp_Large: Max Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/a1713e8e-1388-48f8-9c72-9b7dcb5829a3)
-![(Comp_Large: Max Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/d7964a45-22ea-459e-8f0a-ba709df4733f)
-![(Comp_Large: Max Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/8ee1983a-b3b4-43db-be51-a400d13d77e3)
-![(Comp_Large: Max Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/7c2c7738-c66b-4302-a2d4-63e66588b03d)
-![(Comp_Large: Max Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/21110989-d6d0-40e5-a8b9-554f2f79bf3c)
-![(Comp_Large: Max Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/fb7923c1-2024-4b37-825d-872b715f4c16)
-![(Comp_Large: Average Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/59001c3f-49f5-4381-8f33-50bfea772f78)
-![(Comp_Large: Average Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/f9dd4906-81fd-4cc1-a477-1f40d6d8c629)
-![(Comp_Large: Average Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/86d365a4-b715-412c-af67-20fe0781a1a2)
-![(Comp_Large: Average Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/4d4ee68a-d408-4876-ae03-ddd5b8bc4b6d)
-![(Comp_Large: Average Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/7783d6fd-ff10-434a-b46c-df28ca213560)
-![(Comp_Large: Average Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/74448506-0792-4d42-9b04-d1ce1244c155)
-![(Comp_Large: Average Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/81c46543-5a92-49a7-9bbc-837ec7e0bf4f)
-![(Comm: Weak Scaling vs Number of Processors for sorted](https://github.com/user-attachments/assets/b1b89212-f147-4b8d-abf4-b2ca1d5b68df)
-![(Comm: Weak Scaling vs Number of Processors for reverse](https://github.com/user-attachments/assets/669eb112-4e27-4d80-9385-45eb46ca79a2)
-![(Comm: Weak Scaling vs Number of Processors for random](https://github.com/user-attachments/assets/be885db8-893c-4a92-be91-d747c3b36597)
-![(Comm: Weak Scaling vs Number of Processors for perturbed](https://github.com/user-attachments/assets/6a71493d-23e2-493e-820a-ffae52a7ca8d)
-![(Comm: Total Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/18036c8b-8a08-4b26-93f8-867718721fcb)
-![(Comm: Total Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/b51b30b6-4e04-48ab-90d1-7dceb94035c3)
-![(Comm: Total Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/98586fe8-1435-4b95-9127-d9ce7d545ccc)
-![(Comm: Total Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/6a38b65d-2e19-4633-b36f-3a5d140b77ac)
-![(Comm: Total Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/fe4b168f-8f65-4e8a-a847-f4cd133face2)
-![(Comm: Total Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/50761b39-665a-4dcd-bc77-51c238f30b29)
-![(Comm: Total Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/3bb39594-4186-437a-91a9-ed7fea1dca15)
-![(Comm: Speedup vs Number of Processors for sorted](https://github.com/user-attachments/assets/e73ede23-772a-48cb-8514-b4d397fdb901)
-![(Comm: Speedup vs Number of Processors for reverse](https://github.com/user-attachments/assets/ff995edb-05af-4600-b993-c231daa46602)
-![(Comm: Speedup vs Number of Processors for random](https://github.com/user-attachments/assets/6901df0d-3826-47ae-869d-a980ae091c2a)
-![(Comm: Speedup vs Number of Processors for perturbed](https://github.com/user-attachments/assets/e54d784e-4892-44c8-8c5c-7b64ead2c22b)
-![(Comm: Max Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/e4a713eb-09f7-4920-b68d-e60aaa85f312)
-![(Comm: Max Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/e70d571d-8e96-43c8-862a-c840cdb613c2)
-![(Comm: Max Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/ba9587ed-cb5e-4c42-a558-5c12f7e2f3d2)
-![(Comm: Max Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/d2d3706c-73f6-41af-afe7-5cd014d0b061)
-![(Comm: Max Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/094bedc3-71e4-4c06-b990-544893d05e6a)
-![(Comm: Max Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/eec09f56-1bbf-461c-b41f-6e78e68b220a)
-![(Comm: Max Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/e2b250f9-79fe-4c77-8a95-22e9900559f7)
-![(Comm: Avg Time vs Number of Processors for 268435456](https://github.com/user-attachments/assets/f75e6531-4830-4b1e-a390-4d7b23859788)
-![(Comm: Avg Time vs Number of Processors for 67108864](https://github.com/user-attachments/assets/34e8ed88-d105-4ee6-a49e-ad9b7926a89b)
-![(Comm: Avg Time vs Number of Processors for 16777216](https://github.com/user-attachments/assets/2e918827-c13e-4d18-9d4e-64a7044792cc)
-![(Comm: Avg Time vs Number of Processors for 4194304](https://github.com/user-attachments/assets/ef32b08a-778b-4e3f-bc54-68594b8216d6)
-![(Comm: Avg Time vs Number of Processors for 1048576](https://github.com/user-attachments/assets/49f5ae5c-4891-4c04-94c2-9e3d97966863)
-![(Comm: Avg Time vs Number of Processors for 262144](https://github.com/user-attachments/assets/3c0aced0-84f1-475b-a56f-f0e282c82b6b)
-![(Comm: Avg Time vs Number of Processors for 65536](https://github.com/user-attachments/assets/39c23d58-f921-4811-897e-37eea6c5b160)
+<img width="500" src="https://github.com/user-attachments/assets/4c33259d-c618-4ef1-bd21-ea31d69c9ec2)">
+<img width="500" src="https://github.com/user-attachments/assets/8193afa6-5303-4409-9761-a5eb586e933e)">
+<img width="500" src="https://github.com/user-attachments/assets/e25f3623-5c5f-4c6c-9638-b2d4e9a12ff1)">
+<img width="500" src="https://github.com/user-attachments/assets/bda6b6a1-2b7b-4107-ba0f-abe9ccdd7f74)">
+<img width="500" src="https://github.com/user-attachments/assets/bd80b33b-35fc-44e3-bbef-e5a70332576e)">
+<img width="500" src="https://github.com/user-attachments/assets/f14ff53b-2461-41a3-bb0e-c87146923d9d)">
+<img width="500" src="https://github.com/user-attachments/assets/1372158c-a94a-42a6-8777-39d5d97889a6)">
+<img width="500" src="https://github.com/user-attachments/assets/141efe4d-79f6-48c1-acd5-3d4b90e1132b)">
+<img width="500" src="https://github.com/user-attachments/assets/2d9ad167-c675-4e0e-872f-8350d95196df)">
+<img width="500" src="https://github.com/user-attachments/assets/a78b9973-97c4-48f7-b195-8b42a4854c49)">
+<img width="500" src="https://github.com/user-attachments/assets/cd7b677e-915a-42eb-ac1d-d27f98ca2eb9)">
+<img width="500" src="https://github.com/user-attachments/assets/0f1f0bfc-270a-44d7-9d8e-e2921d5de7e7)">
+<img width="500" src="https://github.com/user-attachments/assets/1b2f6400-6dd7-45e5-93d5-9a8b56cc9699)">
+<img width="500" src="https://github.com/user-attachments/assets/4010f5b1-ed74-449e-b5d7-9bdc946e1446)">
+<img width="500" src="https://github.com/user-attachments/assets/06991150-5af5-4643-b0df-357b6733ebdb)">
+<img width="500" src="https://github.com/user-attachments/assets/2a00e611-041c-4a9a-921f-65d0e96eaa53)">
+<img width="500" src="https://github.com/user-attachments/assets/e4a89669-36ea-44a0-8213-b9e4e59e3082)">
+<img width="500" src="https://github.com/user-attachments/assets/aef16510-b872-4abf-8120-c9df882f16b2)">
+<img width="500" src="https://github.com/user-attachments/assets/873e4545-f304-4925-815b-4aed7af6adaa)">
+<img width="500" src="https://github.com/user-attachments/assets/6c17a5c5-b771-49e0-97d4-b3541e1f8af7)">
+<img width="500" src="https://github.com/user-attachments/assets/d3d74368-de73-453d-8e31-007dc603901e)">
+<img width="500" src="https://github.com/user-attachments/assets/f29e6a99-24b6-495b-9105-70fd89aa5138)">
+<img width="500" src="https://github.com/user-attachments/assets/aa8bb539-e141-4513-93cd-ccf3ba93466d)">
+<img width="500" src="https://github.com/user-attachments/assets/482cf6a2-fce7-40b4-9c0e-d160c3cb432c)">
+<img width="500" src="https://github.com/user-attachments/assets/dcd1f065-3413-4290-a6bb-1d747193f043)">
+<img width="500" src="https://github.com/user-attachments/assets/5e020919-d2d3-4c8f-b248-bd5b70989534)">
+<img width="500" src="https://github.com/user-attachments/assets/f408177f-8080-4d2c-8ddd-bad0664b012d)">
+<img width="500" src="https://github.com/user-attachments/assets/77cc6593-5a8f-43d3-8242-85dd74cf7e27)">
+<img width="500" src="https://github.com/user-attachments/assets/de12ee7a-7845-4168-b659-90f940bfb08c)">
+<img width="500" src="https://github.com/user-attachments/assets/6a972e0a-7707-43fe-a456-59f92e54ae89)">
+<img width="500" src="https://github.com/user-attachments/assets/9846585d-36d0-4029-aa54-1cf16591f906)">
+<img width="500" src="https://github.com/user-attachments/assets/5a95373f-0e31-4d7b-8a4b-7b3919494259)">
+<img width="500" src="https://github.com/user-attachments/assets/a310fc13-3606-4ede-b6d3-48f21fc834df)">
+<img width="500" src="https://github.com/user-attachments/assets/191ad3a1-7339-49a3-b5b9-16e9f250d4b1)">
+<img width="500" src="https://github.com/user-attachments/assets/a34439d2-593e-47ac-b306-53be1b4b2925)">
+<img width="500" src="https://github.com/user-attachments/assets/dfa74f2a-d8c9-41b1-96cb-99368b890f4e)">
+<img width="500" src="https://github.com/user-attachments/assets/29beab90-781a-4568-b9bd-5fa32d43c49a)">
+<img width="500" src="https://github.com/user-attachments/assets/0a71d69a-e4c0-4cf0-83b8-59c4d485933e)">
+<img width="500" src="https://github.com/user-attachments/assets/c28a5f59-2971-42ec-8bae-ef3f08f8ceee)">
+<img width="500" src="https://github.com/user-attachments/assets/fdbc00b4-fe61-4edc-b6c0-eccace450c40)">
+<img width="500" src="https://github.com/user-attachments/assets/b48779fb-3bd3-499d-afbe-f76d53cefaef)">
+<img width="500" src="https://github.com/user-attachments/assets/233db646-5fb4-4785-9b90-b00dca985a62)">
+<img width="500" src="https://github.com/user-attachments/assets/b6344473-cb3b-4442-9ad5-438950ad901f)">
+<img width="500" src="https://github.com/user-attachments/assets/38502268-efd5-4809-b981-be53a09f89d3)">
+<img width="500" src="https://github.com/user-attachments/assets/d7a36d6c-d2bc-4b5b-aa57-435dfb9f9cc5)">
+<img width="500" src="https://github.com/user-attachments/assets/a1713e8e-1388-48f8-9c72-9b7dcb5829a3)">
+<img width="500" src="https://github.com/user-attachments/assets/d7964a45-22ea-459e-8f0a-ba709df4733f)">
+<img width="500" src="https://github.com/user-attachments/assets/8ee1983a-b3b4-43db-be51-a400d13d77e3)">
+<img width="500" src="https://github.com/user-attachments/assets/7c2c7738-c66b-4302-a2d4-63e66588b03d)">
+<img width="500" src="https://github.com/user-attachments/assets/21110989-d6d0-40e5-a8b9-554f2f79bf3c)">
+<img width="500" src="https://github.com/user-attachments/assets/fb7923c1-2024-4b37-825d-872b715f4c16)">
+<img width="500" src="https://github.com/user-attachments/assets/59001c3f-49f5-4381-8f33-50bfea772f78)">
+<img width="500" src="https://github.com/user-attachments/assets/f9dd4906-81fd-4cc1-a477-1f40d6d8c629)">
+<img width="500" src="https://github.com/user-attachments/assets/86d365a4-b715-412c-af67-20fe0781a1a2)">
+<img width="500" src="https://github.com/user-attachments/assets/4d4ee68a-d408-4876-ae03-ddd5b8bc4b6d)">
+<img width="500" src="https://github.com/user-attachments/assets/7783d6fd-ff10-434a-b46c-df28ca213560)">
+<img width="500" src="https://github.com/user-attachments/assets/74448506-0792-4d42-9b04-d1ce1244c155)">
+<img width="500" src="https://github.com/user-attachments/assets/81c46543-5a92-49a7-9bbc-837ec7e0bf4f)">
+<img width="500" src="https://github.com/user-attachments/assets/b1b89212-f147-4b8d-abf4-b2ca1d5b68df)">
+<img width="500" src="https://github.com/user-attachments/assets/669eb112-4e27-4d80-9385-45eb46ca79a2)">
+<img width="500" src="https://github.com/user-attachments/assets/be885db8-893c-4a92-be91-d747c3b36597)">
+<img width="500" src="https://github.com/user-attachments/assets/6a71493d-23e2-493e-820a-ffae52a7ca8d)">
+<img width="500" src="https://github.com/user-attachments/assets/18036c8b-8a08-4b26-93f8-867718721fcb)">
+<img width="500" src="https://github.com/user-attachments/assets/b51b30b6-4e04-48ab-90d1-7dceb94035c3)">
+<img width="500" src="https://github.com/user-attachments/assets/98586fe8-1435-4b95-9127-d9ce7d545ccc)">
+<img width="500" src="https://github.com/user-attachments/assets/6a38b65d-2e19-4633-b36f-3a5d140b77ac)">
+<img width="500" src="https://github.com/user-attachments/assets/fe4b168f-8f65-4e8a-a847-f4cd133face2)">
+<img width="500" src="https://github.com/user-attachments/assets/50761b39-665a-4dcd-bc77-51c238f30b29)">
+<img width="500" src="https://github.com/user-attachments/assets/3bb39594-4186-437a-91a9-ed7fea1dca15)">
+<img width="500" src="https://github.com/user-attachments/assets/e73ede23-772a-48cb-8514-b4d397fdb901)">
+<img width="500" src="https://github.com/user-attachments/assets/ff995edb-05af-4600-b993-c231daa46602)">
+<img width="500" src="https://github.com/user-attachments/assets/6901df0d-3826-47ae-869d-a980ae091c2a)">
+<img width="500" src="https://github.com/user-attachments/assets/e54d784e-4892-44c8-8c5c-7b64ead2c22b)">
+<img width="500" src="https://github.com/user-attachments/assets/e4a713eb-09f7-4920-b68d-e60aaa85f312)">
+<img width="500" src="https://github.com/user-attachments/assets/e70d571d-8e96-43c8-862a-c840cdb613c2)">
+<img width="500" src="https://github.com/user-attachments/assets/ba9587ed-cb5e-4c42-a558-5c12f7e2f3d2)">
+<img width="500" src="https://github.com/user-attachments/assets/d2d3706c-73f6-41af-afe7-5cd014d0b061)">
+<img width="500" src="https://github.com/user-attachments/assets/094bedc3-71e4-4c06-b990-544893d05e6a)">
+<img width="500" src="https://github.com/user-attachments/assets/eec09f56-1bbf-461c-b41f-6e78e68b220a)">
+<img width="500" src="https://github.com/user-attachments/assets/e2b250f9-79fe-4c77-8a95-22e9900559f7)">
+<img width="500" src="https://github.com/user-attachments/assets/f75e6531-4830-4b1e-a390-4d7b23859788)">
+<img width="500" src="https://github.com/user-attachments/assets/34e8ed88-d105-4ee6-a49e-ad9b7926a89b)">
+<img width="500" src="https://github.com/user-attachments/assets/2e918827-c13e-4d18-9d4e-64a7044792cc)">
+<img width="500" src="https://github.com/user-attachments/assets/ef32b08a-778b-4e3f-bc54-68594b8216d6)">
+<img width="500" src="https://github.com/user-attachments/assets/49f5ae5c-4891-4c04-94c2-9e3d97966863)">
+<img width="500" src="https://github.com/user-attachments/assets/3c0aced0-84f1-475b-a56f-f0e282c82b6b)">
+<img width="500" src="https://github.com/user-attachments/assets/39c23d58-f921-4811-897e-37eea6c5b160)">
 
 
 
